@@ -1,5 +1,6 @@
 // 类型提示
 import {defineConfig} from 'vite'
+import vueJSX from '@vitejs/plugin-vue-jsx'
 
 // config
 export default defineConfig(({command,mode})=>{
@@ -10,11 +11,15 @@ export default defineConfig(({command,mode})=>{
 
     return {
         // 项目根目录，index.html 所在的目录
-        root:'/',
+        root:'',
         // 生产或开发环境下的基础路径
         base:'/hboot/',
         // 需要用到的插件数组
-        plugins: [],
+        plugins: [
+            vueJSX({
+                // ... @vue/babel-plugin-jsx 的配置
+            })
+        ],
         // 静态资源服务目录地址
         publicDir:'',
         // 存储缓存文件的目录地址
@@ -46,21 +51,24 @@ export default defineConfig(({command,mode})=>{
         esbuild:{
             // ...
             // 在react组件中无需导入react
-            jsxInject: `import React from 'react'`
+            // jsxInject: `import React from 'react'`,
+            // vue 使用jsx
+            jsxFactory:'h',
+            jsxFragment:'Fragment'
         },
         // 静态资源处理
         assetsInclude: '',
         // 开发服务器选项
         server:{
             // ...
-            host:'',
-            port:''
+            host:'127.0.0.1',
+            port:'8080'
         },
         // 构建配置项
         build:{
             // ...
             // 指定输出目录
-            outDir: '',
+            outDir: './dist',
             // 指定静态资源存放目录
             assetsDir:"",
             // 启用、禁用css代码拆分
@@ -70,7 +78,10 @@ export default defineConfig(({command,mode})=>{
             // rollup 配置打包项
             rollupOptions:{
                 // ...
-            }
+                // input:"src/index.js"
+            },
+            // 构建目录自动清除
+            emptyOutDir:false
         },
         // 依赖优化配置项
         optimizeDeps:{
