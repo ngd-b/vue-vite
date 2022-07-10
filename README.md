@@ -116,3 +116,24 @@ export default defineConfig(({command,mode})=>{
 
 
 ### 安装  `vuex`
+
+
+
+### 安装 `element-plus`
+
+全局配置
+
+```js
+// element
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import { zhCn } from 'element-plus/es/locale/index.js'
+
+
+
+// ....
+
+// element 国际化设置
+app.use(ElementPlus,{size:'small',zIndex:3000, local:zhCn})
+
+```

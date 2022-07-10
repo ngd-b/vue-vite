@@ -1,4 +1,10 @@
 import * as VueRouter from 'vue-router'
+import {
+    Document,
+    Menu,
+    Location,
+    Setting,
+  } from '@element-plus/icons-vue'
 
 // page
 // import CNode from '@/views/CNode/index.vue'
@@ -13,7 +19,8 @@ export const routes = [
         path:'/',
         component:Home,
         meta:{
-            title:'主页'
+            title:'主页',
+            icon: Document
         }
     },
     {
@@ -21,7 +28,8 @@ export const routes = [
         name:'home',
         component:Home,
         meta:{
-            title:'主页'
+            title:'主页',
+            icon:Document
         }
     },
     {
@@ -29,7 +37,8 @@ export const routes = [
         name:'cnode',
         component:CNode,
         meta:{
-            title:'CNode 社区'
+            title:'CNode 社区',
+            icon:Menu
         }
     },
     {
@@ -37,7 +46,8 @@ export const routes = [
         name:'vue3',
         component:VueComponent,
         meta:{
-            title:'Vue3 API'
+            title:'Vue3 API',
+            icon:Location
         }
     },
     {
@@ -45,7 +55,8 @@ export const routes = [
         name:'user',
         component:()=>import('@/views/User'),
         meta:{
-            title:'用户模块'
+            title:'用户模块',
+            icon:Setting
         }
     }
 ]
