@@ -2,6 +2,12 @@ import {createApp} from 'vue'
 
 // main app
 import App from './App.jsx'
+// router
+import router from './route/index.js'
+// store
+import store from './store/index'
+// css
+import './static/base.less'
 
 // 创建app应用
 const app = createApp(App)
@@ -21,5 +27,9 @@ app.config.compilerOptions.whitespace = "preserve"
 
 // 插件安装
 // app.use()
+// 路由配置
+app.use(router)
+// 全局状态管理
+app.use(store)
 
 app.mount("#app")

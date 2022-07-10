@@ -1,5 +1,7 @@
-import {ref,reactive,toRef,defineComponent, render} from 'vue'
+import {ref,reactive,toRef,defineComponent} from 'vue'
 
+// 路由地址
+import { routes } from './route'
 // defineComponent  只返回传递给它的对象；
 // 此处IDE支持
 export default defineComponent({
@@ -29,8 +31,12 @@ export default defineComponent({
     },
     render(){
         return <>
-            <p>{this.count}</p>
-            <button onClick={this.handleAddCount}>+1</button>
+            <ul>
+                {routes.map(item=><li key={item.name} >
+                    <router-link to={{name:item.name}}>{item.meta.title}</router-link>
+                    </li>)}
+            </ul>
+            <router-view></router-view>
         </>
     } 
 })

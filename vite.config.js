@@ -1,6 +1,7 @@
 // 类型提示
 import {defineConfig} from 'vite'
 import vueJSX from '@vitejs/plugin-vue-jsx'
+import vueSFC from '@vitejs/plugin-vue'
 
 // config
 export default defineConfig(({command,mode})=>{
@@ -13,9 +14,12 @@ export default defineConfig(({command,mode})=>{
         // 项目根目录，index.html 所在的目录
         root:'',
         // 生产或开发环境下的基础路径
-        base:'/hboot/',
+        base:'/',
         // 需要用到的插件数组
         plugins: [
+            // .vue 单文件组件
+            vueSFC(),
+            // .jsx 文件类型支持
             vueJSX({
                 // ... @vue/babel-plugin-jsx 的配置
             })
@@ -28,10 +32,10 @@ export default defineConfig(({command,mode})=>{
         resolve:{
             // 设置文件目录别名
             alias:{
-                "@":"./src"
+                "@":"/src"
             },
             //
-            extensions:['.js']
+            extensions:['.js',".jsx",'.vue']
         },
         //
         css:{
@@ -62,7 +66,9 @@ export default defineConfig(({command,mode})=>{
         server:{
             // ...
             host:'127.0.0.1',
-            port:'8080'
+            port:'8081',
+            // 项目启动后自动打开浏览器
+            open:true
         },
         // 构建配置项
         build:{
