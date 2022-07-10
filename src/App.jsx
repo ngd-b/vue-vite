@@ -3,7 +3,7 @@ import { mapState } from 'vuex'
 import './App.less'
 
 // 路由地址
-import { routes } from './route'
+import { routerMenus } from './route'
 // defineComponent  只返回传递给它的对象；
 // 此处IDE支持
 export default defineComponent({
@@ -52,7 +52,7 @@ export default defineComponent({
                             default-active="2"
                             text-color="#fff"
                         >   
-                            {routes.map((item,index)=><el-menu-item key={index} index={item.path}>
+                            {routerMenus.map((item,index)=><el-menu-item key={index} index={item.path}>
                                 <el-icon><item.meta.icon /></el-icon>
                                 <span>{item.meta.title}</span>
                             </el-menu-item>)}

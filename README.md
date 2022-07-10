@@ -137,3 +137,6 @@ import { zhCn } from 'element-plus/es/locale/index.js'
 app.use(ElementPlus,{size:'small',zIndex:3000, local:zhCn})
 
 ```
+
+### 安装 `axios`
+

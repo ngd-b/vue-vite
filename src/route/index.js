@@ -14,14 +14,10 @@ const CNode = ()=>import("@/views/CNode/index.vue")
 const VueComponent = ()=>import('@/views/Vue3')
 
 // routes
-export const routes = [
+const routes = [
     {
         path:'/',
-        component:Home,
-        meta:{
-            title:'主页',
-            icon: Document
-        }
+        redirect:'home'
     },
     {
         path:'/home',
@@ -69,3 +65,5 @@ export default VueRouter.createRouter({
     history:VueRouter.createWebHistory(),
     routes
 })
+// 过滤
+export const routerMenus = routes.filter(item=>item.name)

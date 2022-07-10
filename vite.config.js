@@ -32,7 +32,8 @@ export default defineConfig(({command,mode})=>{
         resolve:{
             // 设置文件目录别名
             alias:{
-                "@":"/src"
+                "@":"/src",
+                'vue':"vue/dist/vue.esm-bundler.js"
             },
             //
             extensions:['.js',".jsx",'.vue']
