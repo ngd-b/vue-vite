@@ -5,6 +5,11 @@ import {
     Location,
     Setting,
   } from '@element-plus/icons-vue'
+import { uesSystemStore } from '@/store/system.js'
+
+// routers
+// 各模块自路由注册
+import CNodeRouters from '@/views/CNode/routers'
 
 // page
 // import CNode from '@/views/CNode/index.vue'
@@ -12,6 +17,7 @@ import {
 const Home = { template: '<div>Home</div>' }
 const CNode = ()=>import("@/views/CNode/index.vue")
 const VueComponent = ()=>import('@/views/Vue3')
+
 
 // routes
 const routes = [
@@ -32,10 +38,12 @@ const routes = [
         path:'/cnode',
         name:'cnode',
         component:CNode,
+        redirect:'/',
         meta:{
             title:'CNode 社区',
             icon:Menu
-        }
+        },
+        children:[...CNodeRouters]
     },
     {
         path:'/vue3',
@@ -61,9 +69,17 @@ const routes = [
  * 创建router实例
  * 
  */
-export default VueRouter.createRouter({
+const router = VueRouter.createRouter({
     history:VueRouter.createWebHistory(),
     routes
 })
+// 路由守卫
+router.beforeEach((to,from,next)=>{
+    const systemStore = uesSystemStore()
+
+    systemStore.changeMenu(to.path)
+    next()
+})
+export default router
 // 过滤
 export const routerMenus = routes.filter(item=>item.name)

@@ -3,11 +3,13 @@ import {createApp} from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
+// pinia 
+import { createPinia } from 'pinia'
 
 // main app
 import App from './App.jsx'
 // router
-import router from './route/index.js'
+import router from './routers/index.js'
 // store
 import store from './store/index'
 // css
@@ -15,6 +17,8 @@ import './static/base.less'
 
 // 创建app应用
 const app = createApp(App)
+// pinia 实例
+const pinia = createPinia()
 
 // 更改全局配置
 // 1. 错误异常处理
@@ -37,5 +41,7 @@ app.use(router)
 app.use(store)
 // element
 app.use(ElementPlus,{size:'small',zIndex:3000, local:zhCn})
+// pinia use
+app.use(pinia)
 
 app.mount("#app")

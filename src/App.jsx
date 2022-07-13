@@ -1,9 +1,10 @@
 import { ref, reactive, toRef, defineComponent } from 'vue'
 import { mapState } from 'vuex'
 import './App.less'
+import { uesSystemStore } from '@/store/system.js'
 
 // 路由地址
-import { routerMenus } from './route'
+import { routerMenus } from './routers'
 // defineComponent  只返回传递给它的对象；
 // 此处IDE支持
 export default defineComponent({
@@ -26,9 +27,14 @@ export default defineComponent({
         const count = ref(0)
         const user = reactive({ name: '', age: 21 })
 
+        // 获取到pinia的数据
+        const systemStore = uesSystemStore()
+
+
         return {
             count,
-            user
+            user,
+            systemStore
         }
     },
     methods: {
@@ -38,7 +44,7 @@ export default defineComponent({
     },
     render() {
         return <>
-            <el-container class="app-container">
+            {this.systemStore.showAside ? <el-container class="app-container">
                 <el-header>
                     <h1>{this.systemName}</h1>
                 </el-header>
@@ -62,7 +68,11 @@ export default defineComponent({
                         <router-view></router-view>
                     </el-main>
                 </el-container>
+            </el-container>:
+            <el-container class="app-container">
+                <router-view></router-view>
             </el-container>
+        }   
         </>
     }
 })

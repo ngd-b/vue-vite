@@ -115,10 +115,62 @@ export default defineConfig(({command,mode})=>{
 ### 安装 `vue-router`
 
 
-### 安装  `vuex`
+### 安装  `vuex` ， 改用了 `pinia`
+
+```shell
+npm install pinia
+
+```
+
+在每个模块中，按目录创建，不需要导入到全局store对象中。
+
+在`setup` 或者JSX响应式模式中，使用 
+```js
+import { uesSystemStore } from '@/store/system.js'
+import { computed } from 'vue'
 
 
+// ... other
 
+export default defineComponent({
+
+    setup(props, context) {
+        // 获取到pinia的数据
+        const systemStore = uesSystemStore()
+
+        // 计算值
+        const name = computed(()=>systemStore.systemName)
+        return {
+            name,
+            systemStore
+        }
+    },
+})
+
+```
+
+在传统的`.vue`模板中
+
+```js
+import { useTabStore } from "../../model";
+
+export default {
+  data() {
+
+    // 此处可创建store实例
+    this.tabStore = useTabStore();
+    return {
+      // list data
+      data: [],
+    };
+  },
+  computed:{
+    activeTab(){
+      return this.tabStore.activeTab
+    }
+  },
+}
+```
 ### 安装 `element-plus`
 
 全局配置
@@ -139,4 +191,7 @@ app.use(ElementPlus,{size:'small',zIndex:3000, local:zhCn})
 ```
 
 ### 安装 `axios`
+
+### 安装 `dayjs`
+
 
