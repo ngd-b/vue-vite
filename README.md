@@ -195,3 +195,7 @@ app.use(ElementPlus,{size:'small',zIndex:3000, local:zhCn})
 ### 安装 `dayjs`
 
 
+
+### QA
+
+1. `$router.push()` 后，在点击`/` 跳转路由不对

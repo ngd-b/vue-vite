@@ -13,3 +13,14 @@ export const getTopicData = (params) => {
         data: params
     })
 }
+
+// 数据详情
+export const getTopicDetail = (params) => {
+    const id = params.id
+
+    return api.request({
+        type: "get",
+        url: `/topic/${id}`,
+        params,
+    })
+}
