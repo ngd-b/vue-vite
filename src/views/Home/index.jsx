@@ -1,7 +1,10 @@
-import { defineComponent, onMounted, onUnmounted, ref } from 'vue'
+import { defineComponent, onMounted, onUnmounted, ref, reactive, computed } from 'vue'
 // markdown
 import MarkdownIt from 'markdown-it'
 import hljs from 'highlight.js'
+// plugins
+import MarkdownItAnchor from 'markdown-it-anchor'
+import slugify from '@sindresorhus/slugify'
 // import "highlight.js/styles/default.css"
 import "highlight.js/styles/atom-one-dark.css"
 
@@ -16,7 +19,16 @@ export default defineComponent({
     emits: [],
     setup(porps, context) {
         // markdow 文件内容
-        let content = ref('33')
+        const content = ref('')
+        // 导航数据
+        // const navData = reactive([])
+        const navData = computed(() => {
+            let arr = content.value.split(/\n/g)
+            //
+            let match = arr.filter(val => val.match(/<h[1-6]/g))
+
+            return match.join('')
+        })
         // 生命周期，挂载
         onMounted(() => {
             // 加载README.md
@@ -50,23 +62,39 @@ export default defineComponent({
                     return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
                 }
             })
+            md.use(MarkdownItAnchor, {
+                level: 1,
+                slugify: s => {
+                    return slugify(s)
+                }
+            })
             // llink
             md.linkify.set({ fuzzyEmail: false });
             content.value = md.render(ReadME)
-
         })
         onUnmounted(() => {
             // 卸载，销毁组件
 
         })
         return {
-            content
+            content,
+            navData
         }
     },
     render() {
-
+        console.log(this.navData)
         return <>
-            <div v-html={this.content}></div>
+            <el-row gutter={30}>
+                <el-col span={18}>
+                    <div v-html={this.content}></div>
+                </el-col>
+                <el-col span={6}>
+                    <el-affix position="top" offset={150}>
+                        <div className='markdown-anchor' v-html={this.navData}></div>
+                    </el-affix>
+                </el-col>
+            </el-row>
+
         </>
     }
 })

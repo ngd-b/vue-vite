@@ -15,3 +15,24 @@
         }
     }
 }
+.markdown-anchor{
+    color:#40485b;
+    padding-left: 15px;
+    opacity: .6;
+    font-size: 13px;
+    h1,h2,h3,h4,h5,h6{
+        position: relative;
+        margin-top: 15px;
+        cursor: pointer;
+        &::before{
+            content:"";
+            position: absolute;
+            top:40%;
+            left:-15px;
+            width: 10px;
+            height:10px;
+            border-radius: 50%;
+            background-color: #40485b;
+        }
+    }
+}

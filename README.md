@@ -117,6 +117,8 @@ export default defineConfig(({command,mode})=>{
 
 ### 安装  `vuex` ， 改用了 `pinia`
 
+项目中可同时存在，这是示例项目。在实际项目开发中，还需要确定一种，避免数据状态来源不明。造成的代码阅读困扰
+
 ```shell
 npm install pinia
 
@@ -256,7 +258,18 @@ onMounted(() => {
 
 ![](/public/imgs/highlightjs.png)
 
+#### 安装`markdown-it-anchor` 以便更好的导航
 
-### QA
+```sh
+npm install markdown-it-anchor @sindresorhus/slugify
+```
+
+
+### QA 问题记录
 
 1. `$router.push()` 后，在点击`/` 跳转路由不对
+
+
+2. 选择器，模糊匹配，比如`h1-h6` 携程`h[1-6]`
+
+3. CSS选择器附加父元素或上一个兄弟元素条件
