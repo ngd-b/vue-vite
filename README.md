@@ -194,6 +194,67 @@ app.use(ElementPlus,{size:'small',zIndex:3000, local:zhCn})
 
 ### 安装 `dayjs`
 
+### markdown 支持
+
+安装`markdown-it` `highlight.js`
+
+使用：  代码是写在`setup`中的
+
+```js
+// markdown
+import MarkdownIt from 'markdown-it'
+import hljs from 'highlight.js'
+
+
+// 将README.md导入进来
+import ReadME from '/README.md?raw'
+
+
+// 生命周期，挂载
+onMounted(() => {
+    // 加载README.md
+    const md = new MarkdownIt({
+        html: false,        // Enable HTML tags in source
+        xhtmlOut: false,        // Use '/' to close single tags (<br />).
+        // This is only for full CommonMark compatibility.
+        breaks: false,        // Convert '\n' in paragraphs into <br>
+        langPrefix: 'language-',  // CSS language prefix for fenced blocks. Can be
+        // useful for external highlighters.
+        linkify: false,        // Autoconvert URL-like text to links
+
+        // Enable some language-neutral replacement + quotes beautification
+        // For the full list of replacements, see https://github.com/markdown-it/markdown-it/blob/master/lib/rules_core/replacements.js
+        typographer: false,
+        // Double + single quotes replacement pairs, when typographer enabled,
+        // and smartquotes on. Could be either a String or an Array.
+        //
+        // For example, you can use '«»„“' for Russian, '„“‚‘' for German,
+        // and ['«\xA0', '\xA0»', '‹\xA0', '\xA0›'] for French (including nbsp).
+        quotes: '“”‘’',
+        highlight: (str, lang) => {
+            if (lang && hljs.getLanguage(lang)) {
+                try {
+                    return '<pre class="hljs"><code>' +
+                        hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+                        '</code></pre>';
+                } catch (__) { }
+            }
+
+            return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+        }
+    })
+    // llink
+    md.linkify.set({ fuzzyEmail: false });
+    content.value = md.render(ReadME)
+
+})
+```
+
+加载个样式，有很多可供挑选 在`import "highlight.js/styles/atom-one-dark.css"`
+
+试了好几个，最后选择了这个，看着还不错。
+
+![](/public/imgs/highlightjs.png)
 
 
 ### QA

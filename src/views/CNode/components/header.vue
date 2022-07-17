@@ -48,7 +48,7 @@ const handleSearch = (val) => {
     line-height: 34px;
     display: inline-block;
   }
-  /deep/ .search {
+  :deep(.search) {
     margin-left: 10px;
     width: 200px;
     .el-input__wrapper {
@@ -69,7 +69,7 @@ const handleSearch = (val) => {
     display: flex;
     justify-content: end;
     font-size: 13px;
-    /deep/ li {
+    :deep(li) {
       padding: 10px 15px;
       &:hover {
         color: #fff;

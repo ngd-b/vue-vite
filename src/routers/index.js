@@ -16,7 +16,8 @@ import CNodeRouters from '@/views/CNode/routers'
 // page
 // import CNode from '@/views/CNode/index.vue'
 // home
-const Home = { template: '<div>Home</div>' }
+// const Home = { template: '<div>Home</div>' }
+const Home = ()=>import('@/views/Home')
 // 异步加载
 // const CNode = ()=>import("@/views/CNode/index.vue")
 const CNode = defineAsyncComponent({
