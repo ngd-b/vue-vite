@@ -4,10 +4,10 @@ import {
     Menu,
     Location,
     Setting,
-  } from '@element-plus/icons-vue'
+} from '@element-plus/icons-vue'
 import { uesSystemStore } from '@/store/system.js'
 import { defineAsyncComponent } from 'vue'
-import { ElEmpty,ElLoading } from 'element-plus'
+import { ElEmpty, ElLoading } from 'element-plus'
 
 // routers
 // 各模块自路由注册
@@ -17,22 +17,22 @@ import CNodeRouters from '@/views/CNode/routers'
 // import CNode from '@/views/CNode/index.vue'
 // home
 // const Home = { template: '<div>Home</div>' }
-const Home = ()=>import('@/views/Home')
+const Home = () => import('@/views/Home')
 // 异步加载
 // const CNode = ()=>import("@/views/CNode/index.vue")
 const CNode = defineAsyncComponent({
     // 工厂函数
-    loader:()=>import('@/views/CNode/index.vue'),
+    loader: () => import('@/views/CNode/index.vue'),
     // 加载时使用的组件
-    loadingComponent:ElLoading,
+    loadingComponent: ElLoading,
     // 出错时使用的组件
-    errorComponent:ElEmpty,
+    errorComponent: ElEmpty,
     // 在显示加载组件时的延迟
-    delay:300,
+    delay: 300,
     // 组件加载超时后显示错误组件
-    timeout:60000,
+    timeout: 60000,
     // 是否可挂起
-    suspensible:false,
+    suspensible: false,
     /**
      *
      * @param {*} error 错误信息对象
@@ -40,62 +40,62 @@ const CNode = defineAsyncComponent({
      * @param {*} fail  一个函数，指示加载程序结束退出
      * @param {*} attempts 允许的最大重试次数
      */
-    onError(error, retry, fail, attempts){
+    onError(error, retry, fail, attempts) {
         if (error.message.match(/fetch/) && attempts <= 3) {
             // 请求发生错误时重试，最多可尝试 3 次
             retry()
-          } else {
+        } else {
             // 注意，retry/fail 就像 promise 的 resolve/reject 一样：
             // 必须调用其中一个才能继续错误处理。
             fail()
-          }
+        }
     }
 })
-const VueComponent = ()=>import('@/views/Vue3')
+const VueComponent = () => import('@/views/Vue3')
 
 
 // routes
 const routes = [
     {
-        path:'/',
-        redirect:'home'
+        path: '/',
+        redirect: 'home'
     },
     {
-        path:'/home',
-        name:'home',
-        component:Home,
-        meta:{
-            title:'主页',
-            icon:Document
+        path: '/home',
+        name: 'home',
+        component: Home,
+        meta: {
+            title: '主页',
+            icon: Document
         }
     },
     {
-        path:'/cnode',
-        name:'cnode',
-        component:CNode,
-        redirect:'/',
-        meta:{
-            title:'CNode 社区',
-            icon:Menu
+        path: '/cnode',
+        name: 'cnode',
+        component: CNode,
+        redirect: '/',
+        meta: {
+            title: 'CNode 社区',
+            icon: Menu
         },
-        children:[...CNodeRouters]
+        children: [...CNodeRouters]
     },
     {
-        path:'/vue3',
-        name:'vue3',
-        component:VueComponent,
-        meta:{
-            title:'Vue3 API',
-            icon:Location
+        path: '/vue3',
+        name: 'vue3',
+        component: VueComponent,
+        meta: {
+            title: 'Vue3 API',
+            icon: Location
         }
     },
     {
-        path:'/user',
-        name:'user',
-        component:()=>import('@/views/User'),
-        meta:{
-            title:'用户模块',
-            icon:Setting
+        path: '/user',
+        name: 'user',
+        component: () => import('@/views/User'),
+        meta: {
+            title: '用户模块',
+            icon: Setting
         }
     }
 ]
@@ -105,11 +105,16 @@ const routes = [
  * 
  */
 const router = VueRouter.createRouter({
-    history:VueRouter.createWebHashHistory(),
-    routes
+    // history: VueRouter.createWebHashHistory(),
+    history: VueRouter.createWebHistory(),
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+        // 始终滚动到顶部
+        return { top: 0 }
+    },
 })
 // 路由守卫
-router.beforeEach((to,from,next)=>{
+router.beforeEach((to, from, next) => {
     const systemStore = uesSystemStore()
 
     systemStore.changeMenu(to.path)
@@ -117,4 +122,4 @@ router.beforeEach((to,from,next)=>{
 })
 export default router
 // 过滤
-export const routerMenus = routes.filter(item=>item.name)
+export const routerMenus = routes.filter(item => item.name)

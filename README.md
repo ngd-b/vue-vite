@@ -264,6 +264,11 @@ onMounted(() => {
 npm install markdown-it-anchor @sindresorhus/slugify
 ```
 
+#### 安装`node-html-parser` 解析字符串为html
+
+```sh
+npm install node-html-parser
+```
 
 ### QA 问题记录
 
@@ -272,4 +277,7 @@ npm install markdown-it-anchor @sindresorhus/slugify
 
 2. 选择器，模糊匹配，比如`h1-h6` 携程`h[1-6]`
 
+
 3. CSS选择器附加父元素或上一个兄弟元素条件
+
+4. 使用a标签进行导航md时，地址会映射到hash路由上

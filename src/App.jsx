@@ -57,8 +57,8 @@ export default defineComponent({
                             class="el-menu-vertical-demo"
                             default-active="2"
                             text-color="#fff"
-                        >   
-                            {routerMenus.map((item,index)=><el-menu-item key={index} index={item.path}>
+                        >
+                            {routerMenus.map((item, index) => <el-menu-item key={index} index={item.path}>
                                 <el-icon><item.meta.icon /></el-icon>
                                 <span>{item.meta.title}</span>
                             </el-menu-item>)}
@@ -68,11 +68,11 @@ export default defineComponent({
                         <router-view></router-view>
                     </el-main>
                 </el-container>
-            </el-container>:
-            <el-container class="app-container">
-                <router-view></router-view>
-            </el-container>
-        }   
+            </el-container> :
+                <el-container class="app-container">
+                    <router-view></router-view>
+                </el-container>
+            }
         </>
     }
 })

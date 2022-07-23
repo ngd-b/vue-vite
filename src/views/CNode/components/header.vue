@@ -1,8 +1,8 @@
 <template>
   <div class="header">
-    <a class="icon" href="/#/cnode">
+    <div class="icon" @click="handleJumpMain">
       <img :src="IconSvg" />
-    </a>
+    </div>
     <el-input class="search" @change="handleSearch">
       <template #prefix>
         <el-icon><Search /></el-icon>
@@ -15,7 +15,7 @@
         }}</router-link>
       </li>
       <li>
-        <router-link to="/">主系统</router-link>
+        <router-link :to="{ name: 'home' }">主系统</router-link>
       </li>
     </ul>
   </div>
@@ -26,11 +26,19 @@ import IconSvg from "./assets/cnodejs_light.svg";
 // 顶部导航
 import { navTabs } from "../routers";
 import { Search } from "@element-plus/icons-vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 /**
  * 输入搜索
  */
 const handleSearch = (val) => {
   // 定义搜索
+};
+const handleJumpMain = () => {
+  // BUG:name 会调home
+  // router.push({ name: "cnode" });
+  router.push({ path: "/cnode" });
 };
 </script>
 <style lang="less" scoped>

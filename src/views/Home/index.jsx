@@ -5,6 +5,7 @@ import hljs from 'highlight.js'
 // plugins
 import MarkdownItAnchor from 'markdown-it-anchor'
 import slugify from '@sindresorhus/slugify'
+import { parse } from 'node-html-parser'
 // import "highlight.js/styles/default.css"
 import "highlight.js/styles/atom-one-dark.css"
 
@@ -20,13 +21,20 @@ export default defineComponent({
     setup(porps, context) {
         // markdow 文件内容
         const content = ref('')
+        // ref
+        const anchor = ref(null)
         // 导航数据
         // const navData = reactive([])
         const navData = computed(() => {
-            let arr = content.value.split(/\n/g)
-            //
-            let match = arr.filter(val => val.match(/<h[1-6]/g))
-
+            let root = parse(content.value)
+            let match = []
+            for (const h of root.querySelectorAll('h1, h2, h3, h4, h5, h6')) {
+                console.log(h)
+                const slug = h.getAttribute('id') || slugify(h.textContent)
+                h.setAttribute('id', slug)
+                // h.innerHTML = `<a href="#${slug}>${h.innerHTML}</a>`
+                match.push(`<a href="#${slug}" class="${h.rawTagName}">${h.innerHTML}</a>`)
+            }
             return match.join('')
         })
         // 生命周期，挂载
@@ -66,6 +74,12 @@ export default defineComponent({
                 level: 1,
                 slugify: s => {
                     return slugify(s)
+                },
+                getTokensText(tokens) {
+                    return tokens
+                        .filter(t => ['text', 'code_inline'].includes(t.type))
+                        .map(t => t.content)
+                        .join('')
                 }
             })
             // llink
@@ -76,13 +90,32 @@ export default defineComponent({
             // 卸载，销毁组件
 
         })
+
+        //
+        const handleAnchor = (event) => {
+            const { target } = event
+            // 拿到h标签上的id属性
+            if (!target) {
+                return
+            }
+            const anchor = target.id
+            if (!anchor) {
+                return
+            }
+            // 手动导航
+            document.querySelector('#' + anchor).scrollIntoView({
+                behavior: 'smooth'
+            })
+
+        }
         return {
             content,
-            navData
+            navData,
+            handleAnchor,
+            anchor
         }
     },
     render() {
-        console.log(this.navData)
         return <>
             <el-row gutter={30}>
                 <el-col span={18}>
@@ -90,7 +123,9 @@ export default defineComponent({
                 </el-col>
                 <el-col span={6}>
                     <el-affix position="top" offset={150}>
-                        <div className='markdown-anchor' v-html={this.navData}></div>
+                        <div ref={this.anchor} className='markdown-anchor' v-html={this.navData}>
+
+                        </div>
                     </el-affix>
                 </el-col>
             </el-row>
