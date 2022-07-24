@@ -6,10 +6,9 @@ import dayjs from 'dayjs'
 
 /**
  * 格式化 YYYY-MM-DD
- * @param {} val 
- * @returns 
+ * @param {} val
+ * @returns
  */
-export const formatDate = (val)=>{
-
-    return dayjs(val).format('YYYY-MM-DD')
+export const formatDate = (val) => {
+  return dayjs(val).format('YYYY-MM-DD')
 }

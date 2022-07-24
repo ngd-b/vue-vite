@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import {  computed } from "vue";
 import { Type, TypeMapName } from "./enum";
 import { useTabStore } from "../model";
 
@@ -13,7 +13,10 @@ import { useTabStore } from "../model";
 const tabStore = useTabStore();
 // 接受props
 const props = defineProps({
-  tab: String,
+  tab: {
+    type:String,
+    default:''
+  },
   isTop: Boolean,
   isGood: Boolean,
 });

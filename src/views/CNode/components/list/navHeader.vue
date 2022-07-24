@@ -1,10 +1,10 @@
 <template>
     <div class="nav-header">
         <ul>
-            <li @click="store.changeTab('')" :class="['nav-item',!activeTab?'active':'']">
+            <li :class="['nav-item',!activeTab?'active':'']" @click="store.changeTab('')">
                 <span>全部</span>
             </li>
-            <li @click="store.changeTab(item.value)" :class="['nav-item',activeTab===item.value?'active':'']" v-for="item in navTypes" :key="item.value">
+            <li v-for="item in navTypes" :key="item.value" :class="['nav-item',activeTab===item.value?'active':'']" @click="store.changeTab(item.value)">
                 <span>{{item.label}}</span>
             </li>
         </ul>
@@ -12,7 +12,7 @@
 </template>
 <script setup>
 import { TypeMapName } from '../enum'
-import { computed,ref } from 'vue'
+import { computed } from 'vue'
 import { useTabStore } from '../../model'
 // tab 项目
 const navTypes = Object.keys(TypeMapName).map(key=>({
@@ -23,7 +23,7 @@ const navTypes = Object.keys(TypeMapName).map(key=>({
 
 const store = useTabStore()
 
-let activeTab = computed(()=>store.activeTab)
+const activeTab = computed(()=>store.activeTab)
 // 
 // const changeTab = computed(()=>store.changeTab)
 </script>

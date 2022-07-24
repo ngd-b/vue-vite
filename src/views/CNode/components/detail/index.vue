@@ -5,7 +5,7 @@
         <main>
           <header>
             <div class="topic-title">
-              <tab-type :tab="data.tab" :isTop="data.top" :isGood="data.good" />
+              <tab-type :tab="data.tab" :is-top="data.top" :is-good="data.good" />
               <h3>{{ data.title }}</h3>
             </div>
             <div class="topic-desc">
@@ -46,7 +46,11 @@ import ReplyInfo from "./reply-info.vue";
 import TabType from "../tabType.vue";
 
 export default {
-  name: "topic-detail",
+  name: "TopicDetail",
+  components: {
+    ReplyInfo,
+    TabType,
+  },
   data() {
     // 标签标识
     this.TypeMapName = TypeMapName;
@@ -58,10 +62,6 @@ export default {
       },
     };
   },
-  components: {
-    ReplyInfo,
-    TabType,
-  },
   mounted() {
     // 文章ID
     this.id = this.$route.query.id;
@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     formatCreateDate(val) {
-      let month = dayjs().diff(dayjs(val), "M");
+      const month = dayjs().diff(dayjs(val), "M");
 
       if (month > 1) {
         return month + "个月以前";
@@ -78,7 +78,7 @@ export default {
       return dayjs(val).format("YYYY-MM-DD");
     },
     async getTopicDetail() {
-      let params = {
+      const params = {
         id: this.id,
         mdrender: true,
         accesstoken: "",

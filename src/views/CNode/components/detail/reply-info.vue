@@ -20,16 +20,15 @@ export default {
   props: {
     data: {
       type: Object,
-      default: () => {
-        author: {
-        }
-      },
+      default: () => ({
+        author: {},
+      }),
     },
   },
   data() {
-    return {};
+    return {}
   },
-};
+}
 </script>
 <style lang="less" scoped>
 .reply-detail {

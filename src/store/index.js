@@ -4,18 +4,17 @@ import { createStore } from 'vuex'
 import User from './module/user'
 
 export default createStore({
-    state(){
-
-        return {
-            systemName:'vite+vue3'
-        }
-    },
-    mutations:{
-        changeSytemName(state,payload){
-            state.systemName = payload
-        }
-    },
-    modules:{
-        user:User
+  state () {
+    return {
+      systemName: 'vite+vue3'
     }
+  },
+  mutations: {
+    changeSytemName (state, payload) {
+      state.systemName = payload
+    }
+  },
+  modules: {
+    user: User
+  }
 })

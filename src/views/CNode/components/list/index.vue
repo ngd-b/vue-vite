@@ -2,14 +2,14 @@
   <div class="cnode-list">
     <nav-header />
     <ul>
-      <li class="list-item" v-for="item in data" :key="item.id">
+      <li v-for="item in data" :key="item.id" class="list-item">
         <a class="author" :href="`/user/${item.author.loginname}`">
           <img :src="item.author.avatar_url" />
         </a>
         <span class="visit">
           {{ item.reply_count + "/" + item.visit_count }}
         </span>
-        <tab-type :tab="item.tab" :isTop="item.top" :isGood="item.good" />
+        <tab-type :tab="item.tab" :is-top="item.top" :is-good="item.good" />
         <span class="content" @click="handleJumpDetail(item)">
           {{ item.title }}
         </span>
@@ -29,16 +29,16 @@ import NavHeader from "./navHeader.vue";
 import TabType from "../tabType.vue";
 
 export default {
+  components: {
+    NavHeader,
+    TabType,
+  },
   data() {
     this.tabStore = useTabStore();
     return {
       // list data
       data: [],
     };
-  },
-  components: {
-    NavHeader,
-    TabType,
   },
   // setup() {
   //   const tabStore = useTabStore();
@@ -77,7 +77,7 @@ export default {
       return dayjs(val).format("YYYY-MM-DD");
     },
     async getCNodeList() {
-      let params = {
+      const params = {
         page: 1,
         tab: this.activeTab,
         limit: 50,

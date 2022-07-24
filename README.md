@@ -3,6 +3,8 @@ vite + vue3
 
 安装vite 从0 搭建vue3 开发环境。
 
+<a href='https://gitee.com/ngd_b/vue3-vite/stargazers'><img src='https://gitee.com/ngd_b/vue3-vite/badge/star.svg?theme=white' alt='star'></img></a>
+
 ### 安装 `vite`
 
 支持 vue 模板文件，支持`jsx`语法文件
@@ -269,6 +271,62 @@ npm install markdown-it-anchor @sindresorhus/slugify
 ```sh
 npm install node-html-parser
 ```
+
+
+### 安装`eslint\husky` 代码规范
+
+代码规范；统一代码格式校验；
+
+eslint 配置文件 `.eslintrc.js`
+
+prettier 配置文件`.prettierrc.js`
+
+#### `eslint`
+
+* `eslint-config-standard`
+
+* `eslint-plugin-import`
+
+* `eslint-plugin-node`
+
+* `eslint-plugin-promise`
+
+
+#### `prettier`
+
+vscode安装`Prettier - Code formatter`, 设置配置；`format on save` and `formatter` 
+
+安装`eslint-config-prettier` 处理eslint和prettier之间的冲突；
+
+支持`vue` 语法检测
+
+`eslint-plugin-vue`
+
+
+#### `husky`
+
+安装
+
+```sh
+npm install husky --save-dev
+```
+在项目初始化时，需要执行`npm set-script prepare "husky install"`
+
+初始化一个在git commit 之前进行eslint 的钩子。
+
+```sh
+npx husky add .husky/pre-commit "npm run lint"
+```
+
+### Blog -系列文章
+
+
+
+[vite-vue3开发环境搭建](https://juejin.cn/post/7121174783407947783)
+
+[Vue3 现在有多少种写法?](https://juejin.cn/post/7123482857632169997)
+
+
 
 ### QA 问题记录
 
