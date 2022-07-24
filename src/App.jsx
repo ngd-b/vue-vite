@@ -66,6 +66,9 @@ export default defineComponent({
                         </el-aside>
                         <el-main>
                             <router-view></router-view>
+                            {/* <el-scrollbar>
+                                <router-view></router-view>
+                            </el-scrollbar> */}
                         </el-main>
                     </el-container>
                 </el-container>

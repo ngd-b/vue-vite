@@ -5,6 +5,8 @@ import 'element-plus/dist/index.css'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 // pinia
 import { createPinia } from 'pinia'
+// component
+import Components from '@/components/index.js'
 
 // main app
 import App from './App.jsx'
@@ -43,5 +45,7 @@ app.use(store)
 app.use(ElementPlus, { size: 'small', zIndex: 3000, local: zhCn })
 // pinia use
 app.use(pinia)
+// 自定义全局组件
+app.use(Components)
 
 app.mount("#app")

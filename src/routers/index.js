@@ -3,7 +3,8 @@ import {
   Document,
   Menu,
   Location,
-  Setting
+  Setting,
+  UserFilled
 } from '@element-plus/icons-vue'
 import { uesSystemStore } from '@/store/system.js'
 import { defineAsyncComponent } from 'vue'
@@ -40,7 +41,7 @@ const CNode = defineAsyncComponent({
      * @param {*} fail  一个函数，指示加载程序结束退出
      * @param {*} attempts 允许的最大重试次数
      */
-  onError (error, retry, fail, attempts) {
+  onError(error, retry, fail, attempts) {
     if (error.message.match(/fetch/) && attempts <= 3) {
       // 请求发生错误时重试，最多可尝试 3 次
       retry()
@@ -51,6 +52,9 @@ const CNode = defineAsyncComponent({
     }
   }
 })
+// elementplus 组件使用，封装
+const ElementPlus = () => import('@/views/ElementPlus')
+// vue3 api
 const VueComponent = () => import('@/views/Vue3')
 
 // routes
@@ -89,12 +93,21 @@ const routes = [
     }
   },
   {
+    path: '/elemenuPlus',
+    name: 'elemenuPlus',
+    component: ElementPlus,
+    meta: {
+      title: 'elementPlus 封装',
+      icon: Setting
+    }
+  },
+  {
     path: '/user',
     name: 'user',
     component: () => import('@/views/User'),
     meta: {
       title: '用户模块',
-      icon: Setting
+      icon: UserFilled
     }
   }
 ]
@@ -107,7 +120,7 @@ const router = VueRouter.createRouter({
   // history: VueRouter.createWebHashHistory(),
   history: VueRouter.createWebHistory(),
   routes,
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     // 始终滚动到顶部
     return { top: 0 }
   }

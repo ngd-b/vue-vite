@@ -339,3 +339,5 @@ npx husky add .husky/pre-commit "npm run lint"
 3. CSS选择器附加父元素或上一个兄弟元素条件
 
 4. 使用a标签进行导航md时，地址会映射到hash路由上
+
+5. 使用vs code提交同步更改时，没有执行git hooks 

@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "npx vite dev",
-    "build": "npx vite build",
+    "build": "npm run lint && npx vite build",
     "preview": "npx vite preview",
     "lint": "eslint --ext .js,.jsx,.vue ./src --fix",
     "prepare": "husky install"
