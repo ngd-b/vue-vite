@@ -40,7 +40,7 @@ export default defineComponent({
     onMounted(() => {
       // 加载README.md
       const md = new MarkdownIt({
-        html: false, // Enable HTML tags in source
+        html: true, // Enable HTML tags in source
         xhtmlOut: false, // Use '/' to close single tags (<br />).
         // This is only for full CommonMark compatibility.
         breaks: false, // Convert '\n' in paragraphs into <br>
@@ -117,7 +117,7 @@ export default defineComponent({
     return <>
       <el-row gutter={30}>
         <el-col span={18}>
-          <div v-html={this.content}></div>
+          <div className='markdown-content' v-html={this.content}></div>
         </el-col>
         <el-col span={6}>
           <el-affix position="top" offset={150}>
