@@ -1,4 +1,4 @@
-import { defineComponent, onMounted, onUnmounted, ref, computed } from 'vue'
+import { defineComponent, reactive, onMounted, onUnmounted, ref, computed } from 'vue'
 // markdown
 import MarkdownIt from 'markdown-it'
 import hljs from 'highlight.js'
@@ -29,7 +29,6 @@ export default defineComponent({
       const root = parse(content.value)
       const match = []
       for (const h of root.querySelectorAll('h1, h2, h3, h4, h5, h6')) {
-        console.log(h)
         const slug = h.getAttribute('id') || slugify(h.textContent)
         h.setAttribute('id', slug)
         // h.innerHTML = `<a href="#${slug}>${h.innerHTML}</a>`

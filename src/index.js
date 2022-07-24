@@ -45,5 +45,3 @@ app.use(ElementPlus, { size: 'small', zIndex: 3000, local: zhCn })
 app.use(pinia)
 
 app.mount("#app")
-
-const name = 'adin'
