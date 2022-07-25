@@ -11,7 +11,7 @@ export default defineComponent({
         // table 属性
         const tableOptions = reactive({
             data:[],
-            column:[]
+            columns:[]
         })
         // 分页属性
         const pageOptions = reactive({
@@ -21,10 +21,21 @@ export default defineComponent({
         })
         onMounted(()=>{
             // 挂载
-            tableOptions.column = [
+            tableOptions.columns = [
                 {
                     prop:'name',
-                    label:'姓名'
+                    label:'姓名',
+                    nested:true,
+                    columns:[
+                        {
+                            prop:'first_name',
+                            label:"姓"
+                        },
+                        {
+                            prop:'last_name',
+                            label:"名"
+                        }
+                    ]
                 },
                 {
                     prop:'age',
@@ -39,6 +50,14 @@ export default defineComponent({
                     label:'地址'
                 }
             ]
+            // 模拟数据
+            tableOptions.data = new Array(10).fill(0).map(index=>({
+                first_name:'王',
+                last_name:'二',
+                age:34,
+                birthday:'1991-01-01',
+                address:"北京故宫博物院"
+            }))
         })
         return{
             tableOptions,

@@ -42,7 +42,7 @@ app.use(router)
 // 全局状态管理
 app.use(store)
 // element
-app.use(ElementPlus, { size: 'small', zIndex: 3000, local: zhCn })
+app.use(ElementPlus, { size: 'small', zIndex: 3000, locale: zhCn })
 // pinia use
 app.use(pinia)
 // 自定义全局组件

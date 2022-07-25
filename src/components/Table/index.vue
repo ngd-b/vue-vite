@@ -4,8 +4,51 @@
             <slot name="header"></slot>
         </header>
         <main class="table-list">
-            <el-table :data="tableOptions.data" >
-                <el-table-column v-for="item in tableOptions.column" :key="item.prop" :label="item.label" :prop="item.prop"></el-table-column>
+            <el-table v-loading="loading" :data="tableOptions.data">
+                <!-- 可展开 -->
+                <template v-if="tableOptions.expand">
+                    <el-table-column type="expand" :fixed="true" width="50px">
+                    <template #default="scope">
+                        <render-column
+                        :render="tableOptions.renderExpandTable"
+                        :scope="scope"
+                        />
+                    </template>
+                    </el-table-column>
+                </template>
+                <template v-for="item in tableOptions.columns">
+                    <!-- checkbox -->
+                    <el-table-column
+                        v-if="item.type === 'selection'"
+                        :key="item.prop || 'selection'"
+                        :align="item.align || 'center'"
+                        type="selection"
+                        v-bind="item"
+                        />
+                    <!-- 表头嵌套：无限嵌套 -->
+                    <nested-column
+                        v-else-if="item.nested"
+                        :key="item.prop"
+                        :data="item"
+                        />
+                    <el-table-column
+                        v-else
+                        :key="item.prop"
+                        :prop="item.prop"
+                        :label="item.label"
+                        :align="item.align || 'center'"
+                        v-bind="item"
+                        >
+                        <template #default="scope">
+                            <render-column
+                            v-if="item.render"
+                            :render="item.render"
+                            :scope="scope"
+                            />
+                            <span v-else>{{ scope.row[item.prop] || "-" }}</span>
+                        </template>
+                    </el-table-column>
+                </template>
             </el-table>
         </main>
         <footer v-if="showPagination" class="table-pagination" >
@@ -22,15 +65,24 @@
     </div>
 </template>
 <script>
+import RenderColumn from "./renderColumn.vue";
+//
+import NestedColumn from "./nestedColumn.vue";
+
+
 export default {
     name:"HbTable",
+    components:{
+        RenderColumn,
+        NestedColumn
+    },
     inheritAttrs:false,
     props:{
         tableOptions:{
             type:Object,
             default:()=>({
                 data:[],
-                column:[]
+                columns:[]
             })
         },
         pageOptions:{
@@ -40,7 +92,8 @@ export default {
         showPagination:{
             type:Boolean,
             default:true,
-        }
+        },
+        loading:Boolean
     },
     emits:['change'],
     data(){
