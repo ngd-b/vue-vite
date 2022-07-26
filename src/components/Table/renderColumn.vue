@@ -13,7 +13,7 @@ export default {
   },
   render(h) {
     const { row, column, $index } = this.scope;
-    return this.render(h, row, column, $index);
+    return this.render(row, column, $index);
   },
 };
 </script>

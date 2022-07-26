@@ -4,7 +4,7 @@
         </div>
 </template>
 <script>
-import {reactive, defineComponent,onMounted} from 'vue'
+import {reactive, defineComponent,onMounted,h} from 'vue'
 
 export default defineComponent({
     setup(){
@@ -29,7 +29,17 @@ export default defineComponent({
                     columns:[
                         {
                             prop:'first_name',
-                            label:"姓"
+                            label:"姓",
+                            render(row,column){
+                                
+                                // return <span style={{fontSize:'20px'}}>{row.first_name}</span>
+                                return h('span',{
+                                    style:{
+                                        fontSize:'20px',
+                                        color:"#ff00ff"
+                                    }
+                                },row.first_name)
+                            }
                         },
                         {
                             prop:'last_name',
