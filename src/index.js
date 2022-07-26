@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
 // element
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'

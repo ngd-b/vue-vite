@@ -281,7 +281,7 @@ eslint 配置文件 `.eslintrc.js`
 
 prettier 配置文件`.prettierrc.js`
 
-#### `eslint`
+#### `eslint` 代码格式校验
 
 * `eslint-config-standard`
 
@@ -292,7 +292,7 @@ prettier 配置文件`.prettierrc.js`
 * `eslint-plugin-promise`
 
 
-#### `prettier`
+#### `prettier` 配合校验，格式化代码文件
 
 vscode安装`Prettier - Code formatter`, 设置配置；`format on save` and `formatter` 
 
@@ -302,8 +302,15 @@ vscode安装`Prettier - Code formatter`, 设置配置；`format on save` and `fo
 
 `eslint-plugin-vue`
 
+配置`.eslintrc.js`：
 
-#### `husky`
+```js
+module.exports = {
+    extends: ['standard', 'plugin:vue/vue3-recommended', 'prettier'],
+}
+```
+
+#### `husky` git hooks 管理
 
 安装
 
@@ -316,7 +323,26 @@ npm install husky --save-dev
 
 ```sh
 npx husky add .husky/pre-commit "npm run lint"
+
+// 
+git add .husky/pre-commit
 ```
+
+#### lint-staged 检测缓存区的改动文件
+
+```sh
+
+npm install --save-dev lint-staged
+
+```
+修改hook `pre-commit`
+
+```
+
+npm run lint-staged
+
+```
+
 
 ### Blog -系列文章
 
