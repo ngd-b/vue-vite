@@ -1,4 +1,4 @@
-import { createApp, h } from 'vue'
+import { createApp } from 'vue'
 // element
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
@@ -48,4 +48,4 @@ app.use(pinia)
 // 自定义全局组件
 app.use(Components)
 
-app.mount("#app")
+app.mount('#app')
