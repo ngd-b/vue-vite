@@ -5,5 +5,5 @@ module.exports = {
     "vueIndentScriptAndStyle": true,
     "tabWidth": 4,
     "indent": 4,
-    "useTabs": true
+    "useTabs": false
 }

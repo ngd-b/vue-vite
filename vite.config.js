@@ -1,10 +1,9 @@
 // 类型提示
-import {defineConfig} from 'vite'
+import { defineConfig } from 'vite'
 import vueJSX from '@vitejs/plugin-vue-jsx'
 import vueSFC from '@vitejs/plugin-vue'
-
 // config
-export default defineConfig(({command,mode})=>{
+export default defineConfig(({ command, mode }) => {
     /**
      * command - 命令模式
      * mode - 生产、开发模式
@@ -12,90 +11,91 @@ export default defineConfig(({command,mode})=>{
 
     return {
         // 项目根目录，index.html 所在的目录
-        root:'',
+        root: '',
         // 生产或开发环境下的基础路径
-        base:'/',
+        base: '/',
         // 需要用到的插件数组
         plugins: [
             // .vue 单文件组件
             vueSFC(),
+
             // .jsx 文件类型支持
             vueJSX({
                 // ... @vue/babel-plugin-jsx 的配置
-            })
+            }),
         ],
         // 静态资源服务目录地址
-        publicDir:'',
+        publicDir: '',
         // 存储缓存文件的目录地址
-        cacheDir:'',
+        cacheDir: '',
         // 
-        resolve:{
+        resolve: {
             // 设置文件目录别名
-            alias:{
-                "@":"/src",
-                'vue':"vue/dist/vue.esm-bundler.js"
+            alias: {
+                '@': '/src',
+                'vue': 'vue/dist/vue.esm-bundler.js'
             },
             //
-            extensions:['.js',".jsx",'.vue']
+            extensions: ['.js', '.jsx', '.vue']
         },
         //
-        css:{
+        css: {
             // postcss-modules 行为配置
-            modules:{
+            modules: {
                 // ...
             },
             // 传递给css预处理器的配置项
-            preprocessorOptions:{
+            preprocessorOptions: {
                 // 指定less预处理的配置项
-                less:{
+                less: {
                     // ...
                 }
             }
         },
         // esbuild 选项转换配置
-        esbuild:{
+        esbuild: {
             // ...
             // 在react组件中无需导入react
             // jsxInject: `import React from 'react'`,
             // vue 使用jsx
-            jsxFactory:'h',
-            jsxFragment:'Fragment'
+            jsxFactory: 'h',
+            jsxFragment: 'Fragment'
         },
         // 静态资源处理
         assetsInclude: '',
         // 开发服务器选项
-        server:{
+        server: {
             // ...
-            host:'127.0.0.1',
-            port:'8081',
+            host: '127.0.0.1',
+            port: '8081',
             // 项目启动后自动打开浏览器
-            open:true
+            open: true
         },
         // 构建配置项
-        build:{
+        build: {
             // ...
             // 指定输出目录
             outDir: './dist',
             // 指定静态资源存放目录
-            assetsDir:"",
+            assetsDir: '',
             // 启用、禁用css代码拆分
-            cssCodeSplit:true,
+            cssCodeSplit: true,
             // 构建是否生成source map文件
-            sourcemap:'inline',
+            sourcemap: 'inline',
             // rollup 配置打包项
-            rollupOptions:{
+            rollupOptions: {
                 // ...
                 // input:"src/index.js"
             },
             // 构建目录自动清除
-            emptyOutDir:false
+            emptyOutDir: false
         },
         // 依赖优化配置项
-        optimizeDeps:{
+        optimizeDeps: {
             // 依赖构建入口
-            entries:'',
+            entries: '',
             // 排除不需要构建的依赖项
-            exclude:[],
+            exclude: [],
         }
     }
 })

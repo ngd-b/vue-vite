@@ -142,9 +142,22 @@ export default{
 
 #### 在`.vue`组件中支持 JSX
 
-```vue
+需要在`script`声明预处理语言`lang='jsx'`
 
+```vue
+<template>
+    <div></div>
+</template>
+<script lang="jsx">
+    export default {
+        data() {
+            return {}
+        },
+    }
+</script>
 ```
+
+可查看示例`ElementPlus/index.vue`
 
 #### 安装`@vitejs/plugin-vue-jsx`
 
