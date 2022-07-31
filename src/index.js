@@ -25,10 +25,10 @@ const pinia = createPinia()
 // 更改全局配置
 // 1. 错误异常处理
 app.config.errorHandler = (err, vm, info) => {
-    console.error(err, vm, info)
+  console.error(err, vm, info)
 }
 app.config.warnHandler = (err, vm, info) => {
-    console.warn(err, vm, info)
+  console.warn(err, vm, info)
 }
 // 2. 全局属性设置
 app.config.globalProperties.$http = null

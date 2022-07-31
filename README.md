@@ -22,98 +22,98 @@ import vueSFC from '@vitejs/plugin-vue'
 
 // config
 export default defineConfig(({ command, mode }) => {
-    /**
-     * command - 命令模式
-     * mode - 生产、开发模式
-     */
+  /**
+   * command - 命令模式
+   * mode - 生产、开发模式
+   */
 
-    return {
-        // 项目根目录，index.html 所在的目录
-        root: '',
-        // 生产或开发环境下的基础路径
-        base: '/',
-        // 需要用到的插件数组
-        plugins: [
-            // .vue 单文件组件
-            vueSFC(),
-            // .jsx 文件类型支持
-            vueJSX({
-                // ... @vue/babel-plugin-jsx 的配置
-            }),
-        ],
-        // 静态资源服务目录地址
-        publicDir: '',
-        // 存储缓存文件的目录地址
-        cacheDir: '',
-        //
-        resolve: {
-            // 设置文件目录别名
-            alias: {
-                '@': '/src',
-            },
-            //
-            extensions: ['.js', '.jsx', '.vue'],
+  return {
+    // 项目根目录，index.html 所在的目录
+    root: '',
+    // 生产或开发环境下的基础路径
+    base: '/',
+    // 需要用到的插件数组
+    plugins: [
+      // .vue 单文件组件
+      vueSFC(),
+      // .jsx 文件类型支持
+      vueJSX({
+        // ... @vue/babel-plugin-jsx 的配置
+      }),
+    ],
+    // 静态资源服务目录地址
+    publicDir: '',
+    // 存储缓存文件的目录地址
+    cacheDir: '',
+    //
+    resolve: {
+      // 设置文件目录别名
+      alias: {
+        '@': '/src',
+      },
+      //
+      extensions: ['.js', '.jsx', '.vue'],
+    },
+    //
+    css: {
+      // postcss-modules 行为配置
+      modules: {
+        // ...
+      },
+      // 传递给css预处理器的配置项
+      preprocessorOptions: {
+        // 指定less预处理的配置项
+        less: {
+          // ...
         },
-        //
-        css: {
-            // postcss-modules 行为配置
-            modules: {
-                // ...
-            },
-            // 传递给css预处理器的配置项
-            preprocessorOptions: {
-                // 指定less预处理的配置项
-                less: {
-                    // ...
-                },
-            },
-        },
-        // esbuild 选项转换配置
-        esbuild: {
-            // ...
-            // 在react组件中无需导入react
-            // jsxInject: `import React from 'react'`,
-            // vue 使用jsx
-            jsxFactory: 'h',
-            jsxFragment: 'Fragment',
-        },
-        // 静态资源处理
-        assetsInclude: '',
-        // 开发服务器选项
-        server: {
-            // ...
-            host: '127.0.0.1',
-            port: '8081',
-            // 项目启动后自动打开浏览器
-            open: true,
-        },
-        // 构建配置项
-        build: {
-            // ...
-            // 指定输出目录
-            outDir: './dist',
-            // 指定静态资源存放目录
-            assetsDir: '',
-            // 启用、禁用css代码拆分
-            cssCodeSplit: true,
-            // 构建是否生成source map文件
-            sourcemap: 'inline',
-            // rollup 配置打包项
-            rollupOptions: {
-                // ...
-                // input:"src/index.js"
-            },
-            // 构建目录自动清除
-            emptyOutDir: false,
-        },
-        // 依赖优化配置项
-        optimizeDeps: {
-            // 依赖构建入口
-            entries: '',
-            // 排除不需要构建的依赖项
-            exclude: [],
-        },
-    }
+      },
+    },
+    // esbuild 选项转换配置
+    esbuild: {
+      // ...
+      // 在react组件中无需导入react
+      // jsxInject: `import React from 'react'`,
+      // vue 使用jsx
+      jsxFactory: 'h',
+      jsxFragment: 'Fragment',
+    },
+    // 静态资源处理
+    assetsInclude: '',
+    // 开发服务器选项
+    server: {
+      // ...
+      host: '127.0.0.1',
+      port: '8081',
+      // 项目启动后自动打开浏览器
+      open: true,
+    },
+    // 构建配置项
+    build: {
+      // ...
+      // 指定输出目录
+      outDir: './dist',
+      // 指定静态资源存放目录
+      assetsDir: '',
+      // 启用、禁用css代码拆分
+      cssCodeSplit: true,
+      // 构建是否生成source map文件
+      sourcemap: 'inline',
+      // rollup 配置打包项
+      rollupOptions: {
+        // ...
+        // input:"src/index.js"
+      },
+      // 构建目录自动清除
+      emptyOutDir: false,
+    },
+    // 依赖优化配置项
+    optimizeDeps: {
+      // 依赖构建入口
+      entries: '',
+      // 排除不需要构建的依赖项
+      exclude: [],
+    },
+  }
 })
 ```
 
@@ -146,14 +146,14 @@ export default{
 
 ```vue
 <template>
-    <div></div>
+  <div></div>
 </template>
 <script lang="jsx">
-    export default {
-        data() {
-            return {}
-        },
-    }
+  export default {
+    data() {
+      return {}
+    },
+  }
 </script>
 ```
 
@@ -167,12 +167,12 @@ export default{
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-    data() {
-        return {}
-    },
-    render() {
-        return <></>
-    },
+  data() {
+    return {}
+  },
+  render() {
+    return <></>
+  },
 })
 ```
 
@@ -198,17 +198,17 @@ import { computed } from 'vue'
 // ... other
 
 export default defineComponent({
-    setup(props, context) {
-        // 获取到pinia的数据
-        const systemStore = uesSystemStore()
+  setup(props, context) {
+    // 获取到pinia的数据
+    const systemStore = uesSystemStore()
 
-        // 计算值
-        const name = computed(() => systemStore.systemName)
-        return {
-            name,
-            systemStore,
-        }
-    },
+    // 计算值
+    const name = computed(() => systemStore.systemName)
+    return {
+      name,
+      systemStore,
+    }
+  },
 })
 ```
 
@@ -218,19 +218,19 @@ export default defineComponent({
 import { useTabStore } from '../../model'
 
 export default {
-    data() {
-        // 此处可创建store实例
-        this.tabStore = useTabStore()
-        return {
-            // list data
-            data: [],
-        }
+  data() {
+    // 此处可创建store实例
+    this.tabStore = useTabStore()
+    return {
+      // list data
+      data: [],
+    }
+  },
+  computed: {
+    activeTab() {
+      return this.tabStore.activeTab
     },
-    computed: {
-        activeTab() {
-            return this.tabStore.activeTab
-        },
-    },
+  },
 }
 ```
 
@@ -270,49 +270,47 @@ import ReadME from '/README.md?raw'
 
 // 生命周期，挂载
 onMounted(() => {
-    // 加载README.md
-    const md = new MarkdownIt({
-        html: false, // Enable HTML tags in source
-        xhtmlOut: false, // Use '/' to close single tags (<br />).
-        // This is only for full CommonMark compatibility.
-        breaks: false, // Convert '\n' in paragraphs into <br>
-        langPrefix: 'language-', // CSS language prefix for fenced blocks. Can be
-        // useful for external highlighters.
-        linkify: false, // Autoconvert URL-like text to links
+  // 加载README.md
+  const md = new MarkdownIt({
+    html: false, // Enable HTML tags in source
+    xhtmlOut: false, // Use '/' to close single tags (<br />).
+    // This is only for full CommonMark compatibility.
+    breaks: false, // Convert '\n' in paragraphs into <br>
+    langPrefix: 'language-', // CSS language prefix for fenced blocks. Can be
+    // useful for external highlighters.
+    linkify: false, // Autoconvert URL-like text to links
 
-        // Enable some language-neutral replacement + quotes beautification
-        // For the full list of replacements, see https://github.com/markdown-it/markdown-it/blob/master/lib/rules_core/replacements.js
-        typographer: false,
-        // Double + single quotes replacement pairs, when typographer enabled,
-        // and smartquotes on. Could be either a String or an Array.
-        //
-        // For example, you can use '«»„“' for Russian, '„“‚‘' for German,
-        // and ['«\xA0', '\xA0»', '‹\xA0', '\xA0›'] for French (including nbsp).
-        quotes: '“”‘’',
-        highlight: (str, lang) => {
-            if (lang && hljs.getLanguage(lang)) {
-                try {
-                    return (
-                        '<pre class="hljs"><code>' +
-                        hljs.highlight(str, {
-                            language: lang,
-                            ignoreIllegals: true,
-                        }).value +
-                        '</code></pre>'
-                    )
-                } catch (__) {}
-            }
+    // Enable some language-neutral replacement + quotes beautification
+    // For the full list of replacements, see https://github.com/markdown-it/markdown-it/blob/master/lib/rules_core/replacements.js
+    typographer: false,
+    // Double + single quotes replacement pairs, when typographer enabled,
+    // and smartquotes on. Could be either a String or an Array.
+    //
+    // For example, you can use '«»„“' for Russian, '„“‚‘' for German,
+    // and ['«\xA0', '\xA0»', '‹\xA0', '\xA0›'] for French (including nbsp).
+    quotes: '“”‘’',
+    highlight: (str, lang) => {
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return (
+            '<pre class="hljs"><code>' +
+            hljs.highlight(str, {
+              language: lang,
+              ignoreIllegals: true,
+            }).value +
+            '</code></pre>'
+          )
+        } catch (__) {}
+      }
 
-            return (
-                '<pre class="hljs"><code>' +
-                md.utils.escapeHtml(str) +
-                '</code></pre>'
-            )
-        },
-    })
-    // llink
-    md.linkify.set({ fuzzyEmail: false })
-    content.value = md.render(ReadME)
+      return (
+        '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>'
+      )
+    },
+  })
+  // llink
+  md.linkify.set({ fuzzyEmail: false })
+  content.value = md.render(ReadME)
 })
 ```
 
@@ -336,7 +334,7 @@ npm install node-html-parser
 
 ### 安装`eslint\husky` 代码规范
 
-代码规范；统一代码格式校验；
+代码规范；统一代码格式校验； (有一些配置还是有问题)
 
 eslint 配置文件 `.eslintrc.js`
 
@@ -344,13 +342,13 @@ prettier 配置文件`.prettierrc.js`
 
 #### `eslint` 代码格式校验
 
--   `eslint-config-standard`
+- `eslint-config-standard`
 
--   `eslint-plugin-import`
+- `eslint-plugin-import`
 
--   `eslint-plugin-node`
+- `eslint-plugin-node`
 
--   `eslint-plugin-promise`
+- `eslint-plugin-promise`
 
 #### `prettier` 配合校验，格式化代码文件
 
@@ -366,7 +364,7 @@ vscode 安装`Prettier - Code formatter`, 设置配置；`format on save` and `f
 
 ```js
 module.exports = {
-    extends: ['standard', 'plugin:vue/vue3-recommended', 'prettier'],
+  extends: ['standard', 'plugin:vue/vue3-recommended', 'prettier'],
 }
 ```
 
@@ -410,6 +408,8 @@ npm run lint-staged
 [vite-vue3 开发环境搭建](https://juejin.cn/post/7121174783407947783)
 
 [Vue3 现在有多少种写法?](https://juejin.cn/post/7123482857632169997)
+
+[vue3 sfc 单文件组件中如何书写 JSX 语法？](https://blog.csdn.net/heroboyluck/article/details/126057882?spm=1001.2014.3001.5501)
 
 ### QA 问题记录
 

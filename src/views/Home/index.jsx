@@ -1,4 +1,11 @@
-import { defineComponent, reactive, onMounted, onUnmounted, ref, computed } from 'vue'
+import {
+  defineComponent,
+  reactive,
+  onMounted,
+  onUnmounted,
+  ref,
+  computed,
+} from 'vue'
 // markdown
 import MarkdownIt from 'markdown-it'
 import hljs from 'highlight.js'
@@ -13,14 +20,13 @@ import 'highlight.js/styles/atom-one-dark.css'
 import ReadME from '/README.md?raw'
 
 export default defineComponent({
-  props: {
-
-  },
+  props: {},
   // 组件自定义触发事件，对象可定义验证函数
   emits: [],
   setup(porps, context) {
     // markdow 文件内容
     const content = ref('')
+
     // ref
     const anchor = ref(null)
     // 导航数据
@@ -32,7 +38,9 @@ export default defineComponent({
         const slug = h.getAttribute('id') || slugify(h.textContent)
         h.setAttribute('id', slug)
         // h.innerHTML = `<a href="#${slug}>${h.innerHTML}</a>`
-        match.push(`<a href="#${slug}" class="${h.rawTagName}">${h.innerHTML}</a>`)
+        match.push(
+          `<a href="#${slug}" class="${h.rawTagName}">${h.innerHTML}</a>`
+        )
       }
       return match.join('')
     })
@@ -60,26 +68,35 @@ export default defineComponent({
         highlight: (str, lang) => {
           if (lang && hljs.getLanguage(lang)) {
             try {
-              return '<pre class="hljs"><code>' +
-                hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+              return (
+                '<pre class="hljs"><code>' +
+                hljs.highlight(str, {
+                  language: lang,
+                  ignoreIllegals: true,
+                }).value +
                 '</code></pre>'
+              )
             } catch (__) { }
           }
 
-          return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>'
-        }
+          return (
+            '<pre class="hljs"><code>' +
+            md.utils.escapeHtml(str) +
+            '</code></pre>'
+          )
+        },
       })
       md.use(MarkdownItAnchor, {
         level: 1,
-        slugify: s => {
+        slugify: (s) => {
           return slugify(s)
         },
         getTokensText(tokens) {
           return tokens
-            .filter(t => ['text', 'code_inline'].includes(t.type))
-            .map(t => t.content)
+            .filter((t) => ['text', 'code_inline'].includes(t.type))
+            .map((t) => t.content)
             .join('')
-        }
+        },
       })
       // llink
       md.linkify.set({ fuzzyEmail: false })
@@ -87,7 +104,6 @@ export default defineComponent({
     })
     onUnmounted(() => {
       // 卸载，销毁组件
-
     })
 
     //
@@ -103,31 +119,37 @@ export default defineComponent({
       }
       // 手动导航
       document.querySelector('#' + anchor).scrollIntoView({
-        behavior: 'smooth'
+        behavior: 'smooth',
       })
     }
     return {
       content,
       navData,
       handleAnchor,
-      anchor
+      anchor,
     }
   },
   render() {
-    return <>
-      <el-row gutter={30}>
-        <el-col span={18}>
-          <div className='markdown-content' v-html={this.content}></div>
-        </el-col>
-        <el-col span={6}>
-          <el-affix position="top" offset={150}>
-            <div ref={this.anchor} className='markdown-anchor' v-html={this.navData}>
-
-            </div>
-          </el-affix>
-        </el-col>
-      </el-row>
-
-    </>
-  }
+    return (
+      <>
+        <el-row gutter={30}>
+          <el-col span={18}>
+            <div
+              className="markdown-content"
+              v-html={this.content}
+            ></div>
+          </el-col>
+          <el-col span={6}>
+            <el-affix position="top" offset={150}>
+              <div
+                ref={this.anchor}
+                className="markdown-anchor"
+                v-html={this.navData}
+              ></div>
+            </el-affix>
+          </el-col>
+        </el-row>
+      </>
+    )
+  },
 })
