@@ -3,10 +3,16 @@ import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import en from 'element-plus/es/locale/lang/en'
 // pinia
 import { createPinia } from 'pinia'
 // component
 import Components from '@/components/index.js'
+// vue-i18n
+import { createI18n } from 'vue-i18n'
+// locale
+import enLocale from './locals/en.json'
+import cnLocale from './locals/cn.json'
 
 // main app
 import App from './App.jsx'
@@ -35,6 +41,21 @@ app.config.globalProperties.$http = null
 // 3. 编译配置项
 app.config.compilerOptions.whitespace = 'preserve'
 
+// 4. 国际化配置
+const i18n = createI18n({
+  locale: localStorage.getItem('lang') || 'zh',
+  messages: {
+    en: {
+      ...en,
+      ...enLocale,
+    },
+    zh: {
+      ...zhCn,
+      ...cnLocale,
+    },
+  },
+})
+
 // 插件安装
 // app.use()
 // 路由配置
@@ -47,5 +68,7 @@ app.use(ElementPlus, { size: 'small', zIndex: 3000, locale: zhCn })
 app.use(pinia)
 // 自定义全局组件
 app.use(Components)
+// 国际化
+app.use(i18n)
 
 app.mount('#app')

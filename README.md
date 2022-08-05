@@ -403,6 +403,49 @@ npm run lint-staged
 
 ```
 
+### i18n 国际化配置
+
+安装插件
+
+```sh
+//
+npm i --save-dev vue-i18n
+
+// vite 插件，暂时没有用到
+npm i --save-dev @intlify/vite-plugin-vue-i18n
+```
+
+配置`index.js`
+
+```js
+// vue-i18n
+import { createI18n } from 'vue-i18n'
+// locale
+import enLocale from './locals/en.json'
+import cnLocale from './locals/cn.json'
+
+
+// 4. 国际化配置
+const i18n = createI18n({
+  locale: 'zh',
+  messages: {
+    en: {
+      ...en,
+      ...enLocale,
+    },
+    zh: {
+      ...zhCn,
+      ...cnLocale,
+    },
+  },
+})
+
+
+// 国际化
+app.use(i18n)
+
+```
+
 ### Blog -系列文章
 
 [vite-vue3 开发环境搭建](https://juejin.cn/post/7121174783407947783)

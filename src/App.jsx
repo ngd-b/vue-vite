@@ -1,4 +1,4 @@
-import { ref, reactive, defineComponent, onMounted } from 'vue'
+import { ref, reactive, defineComponent, onMounted, computed } from 'vue'
 import { mapState } from 'vuex'
 import './App.less'
 import { uesSystemStore } from '@/store/system.js'
@@ -22,11 +22,14 @@ export default defineComponent({
 
     // 获取到pinia的数据
     const systemStore = uesSystemStore()
+    // 当前切换语言
+    const lang = computed(() => systemStore.lang)
 
     return {
       count,
       user,
       systemStore,
+      lang,
     }
   },
   computed: {
@@ -38,6 +41,13 @@ export default defineComponent({
     handleAddCount() {
       this.count++
     },
+    /**
+     * 语言切换
+     */
+    transformLang(val) {
+      this.$i18n.locale = val
+      this.systemStore.transformLang(val)
+    },
   },
   render() {
     return (
@@ -46,6 +56,18 @@ export default defineComponent({
           <el-container class="app-container">
             <el-header>
               <h1>{this.systemName}</h1>
+              <div className="lang-transform">
+                <el-switch
+                  model-value={this.lang}
+                  inline-prompt
+                  size="large"
+                  active-value="zh"
+                  inactive-value="en"
+                  active-text="中文"
+                  inactive-text="英文"
+                  onChange={this.transformLang}
+                />
+              </div>
             </el-header>
             <el-container>
               <el-aside width="200px">
@@ -62,7 +84,7 @@ export default defineComponent({
                       <el-icon>
                         <item.meta.icon />
                       </el-icon>
-                      <span>{item.meta.title}</span>
+                      <span>{this.$t(item.meta.title)}</span>
                     </el-menu-item>
                   ))}
                 </el-menu>
@@ -72,6 +94,7 @@ export default defineComponent({
                 {/* <el-scrollbar>
                                 <router-view></router-view>
                             </el-scrollbar> */}
+                {/* <el-backtop bottom={50} right={50} visibility-height={80} /> */}
               </el-main>
             </el-container>
           </el-container>

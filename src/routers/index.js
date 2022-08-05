@@ -4,7 +4,7 @@ import {
   Menu,
   Location,
   Setting,
-  UserFilled
+  UserFilled,
 } from '@element-plus/icons-vue'
 import { uesSystemStore } from '@/store/system.js'
 import { defineAsyncComponent } from 'vue'
@@ -35,12 +35,12 @@ const CNode = defineAsyncComponent({
   // 是否可挂起
   suspensible: false,
   /**
-     *
-     * @param {*} error 错误信息对象
-     * @param {*} retry 一个函数，用于指示当 promise 加载器 reject 时，加载器是否应该重试
-     * @param {*} fail  一个函数，指示加载程序结束退出
-     * @param {*} attempts 允许的最大重试次数
-     */
+   *
+   * @param {*} error 错误信息对象
+   * @param {*} retry 一个函数，用于指示当 promise 加载器 reject 时，加载器是否应该重试
+   * @param {*} fail  一个函数，指示加载程序结束退出
+   * @param {*} attempts 允许的最大重试次数
+   */
   onError(error, retry, fail, attempts) {
     if (error.message.match(/fetch/) && attempts <= 3) {
       // 请求发生错误时重试，最多可尝试 3 次
@@ -50,7 +50,7 @@ const CNode = defineAsyncComponent({
       // 必须调用其中一个才能继续错误处理。
       fail()
     }
-  }
+  },
 })
 // elementplus 组件使用，封装
 const ElementPlus = () => import('@/views/ElementPlus')
@@ -61,16 +61,16 @@ const VueComponent = () => import('@/views/Vue3')
 const routes = [
   {
     path: '/',
-    redirect: 'home'
+    redirect: 'home',
   },
   {
     path: '/home',
     name: 'home',
     component: Home,
     meta: {
-      title: '主页',
-      icon: Document
-    }
+      title: 'home',
+      icon: Document,
+    },
   },
   {
     path: '/cnode',
@@ -78,38 +78,38 @@ const routes = [
     component: CNode,
     redirect: '/',
     meta: {
-      title: 'CNode 社区',
-      icon: Menu
+      title: 'cnode',
+      icon: Menu,
     },
-    children: [...CNodeRouters]
+    children: [...CNodeRouters],
   },
   {
     path: '/vue3',
     name: 'vue3',
     component: VueComponent,
     meta: {
-      title: 'Vue3 API',
-      icon: Location
-    }
+      title: 'vue3',
+      icon: Location,
+    },
   },
   {
     path: '/elemenuPlus',
     name: 'elemenuPlus',
     component: ElementPlus,
     meta: {
-      title: 'elementPlus 封装',
-      icon: Setting
-    }
+      title: 'elementPlus',
+      icon: Setting,
+    },
   },
   {
     path: '/user',
     name: 'user',
     component: () => import('@/views/User'),
     meta: {
-      title: '用户模块',
-      icon: UserFilled
-    }
-  }
+      title: 'user',
+      icon: UserFilled,
+    },
+  },
 ]
 
 /**
@@ -123,7 +123,7 @@ const router = VueRouter.createRouter({
   scrollBehavior(to, from, savedPosition) {
     // 始终滚动到顶部
     return { top: 0 }
-  }
+  },
 })
 // 路由守卫
 router.beforeEach((to, from, next) => {
@@ -134,4 +134,4 @@ router.beforeEach((to, from, next) => {
 })
 export default router
 // 过滤
-export const routerMenus = routes.filter(item => item.name)
+export const routerMenus = routes.filter((item) => item.name)
