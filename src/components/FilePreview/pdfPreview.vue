@@ -16,6 +16,10 @@ export default {
     url:{
       type:String,
       default:''
+    },
+    pageNum:{
+      type:Number,
+      default:1
     }
   },  
   data(){
@@ -41,6 +45,7 @@ export default {
     init(){
       const self = this
       // 创建实例，加载文件
+      console.log(this.url)
       const loadingTask = pdfjs.getDocument(this.url);
       const container = this.$refs.pdf
       // 通过promise读取
@@ -87,7 +92,8 @@ export default {
           }
           // Loading of the first page will wait on metadata and subsequent loadings
           // will wait on the previous pages.
-          for (let i = 1; i <= numPages; i++) {
+          const pageNum = Math.min(self.pageNum,numPages)
+          for (let i = 1; i <= pageNum; i++) {
             // lastPromise = lastPromise.then(loadPage.bind(null, i));
             loadPage(i)
           }

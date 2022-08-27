@@ -1,7 +1,7 @@
 <template>
     <div class="file-preview">
         <keep-alive>
-            <component :is="dynamicComponent" :url="url" />
+            <component :is="dynamicComponent" v-bind="$attrs" />
         </keep-alive>
     </div>
 </template>
@@ -20,10 +20,6 @@ const props = defineProps({
   type:{
     type:String,
     default:''
-  },
-  url:{
-    type:String,
-    default:''
   }
 })
 // 动态组件
@@ -31,6 +27,6 @@ const dynamicComponent = computed(()=>TypeMapComponent[props.type])
 </script>
 <script>
 export default {
-  name:'HbFilePreview'
+  name:'HbFilePreview',
 }
 </script>

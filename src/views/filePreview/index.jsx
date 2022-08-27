@@ -32,7 +32,7 @@ export default defineComponent({
           ))}
         </el-tabs>
         <main>
-          <hb-file-preview type={this.activeTab} url={pdfFile} />
+          <hb-file-preview type={this.activeTab} url={pdfFile} pageNum={10} />
         </main>
       </div>
     )
