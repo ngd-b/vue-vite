@@ -5,6 +5,7 @@ import {
   Location,
   Setting,
   UserFilled,
+  HomeFilled
 } from '@element-plus/icons-vue'
 import { uesSystemStore } from '@/store/system.js'
 import { defineAsyncComponent } from 'vue'
@@ -110,6 +111,15 @@ const routes = [
       icon: UserFilled,
     },
   },
+  {
+    path: '/file-preview',
+    name: 'filePreview',
+    component: () => import('@/views/filePreview'),
+    meta:{
+      title:'file-preview',
+      icon:HomeFilled
+    }
+  }
 ]
 
 /**

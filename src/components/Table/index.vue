@@ -16,11 +16,10 @@
                         </template>
                     </el-table-column>
                 </template>
-                <template v-for="item in tableOptions.columns">
+                <template v-for="item in tableOptions.columns" :key="item.prop">
                     <!-- checkbox -->
                     <el-table-column
                         v-if="item.type === 'selection'"
-                        :key="item.prop || 'selection'"
                         :align="item.align || 'center'"
                         type="selection"
                         v-bind="item"
@@ -28,12 +27,10 @@
                     <!-- 表头嵌套：无限嵌套 -->
                     <nested-column
                         v-else-if="item.nested"
-                        :key="item.prop"
                         :data="item"
                     />
                     <el-table-column
                         v-else
-                        :key="item.prop"
                         :prop="item.prop"
                         :label="item.label"
                         :align="item.align || 'center'"
@@ -72,40 +69,40 @@ import RenderColumn from './renderColumn.vue'
 import NestedColumn from './nestedColumn.vue'
 
 export default {
-    name: 'HbTable',
-    components: {
-        RenderColumn,
-        NestedColumn,
+  name: 'HbTable',
+  components: {
+    RenderColumn,
+    NestedColumn,
+  },
+  inheritAttrs: false,
+  props: {
+    tableOptions: {
+      type: Object,
+      default: () => ({
+        data: [],
+        columns: [],
+      }),
     },
-    inheritAttrs: false,
-    props: {
-        tableOptions: {
-            type: Object,
-            default: () => ({
-                data: [],
-                columns: [],
-            }),
-        },
-        pageOptions: {
-            type: Object,
-            default: () => {},
-        },
-        showPagination: {
-            type: Boolean,
-            default: true,
-        },
-        loading: Boolean,
+    pageOptions: {
+      type: Object,
+      default: () => {},
     },
-    emits: ['change'],
-    data() {
-        return {}
+    showPagination: {
+      type: Boolean,
+      default: true,
     },
-    methods: {
-        handleChange(val, attr) {
-            // 分页、页码
-            this.$emit('change', { [attr]: val })
-        },
+    loading: Boolean,
+  },
+  emits: ['change'],
+  data() {
+    return {}
+  },
+  methods: {
+    handleChange(val, attr) {
+      // 分页、页码
+      this.$emit('change', { [attr]: val })
     },
+  },
 }
 </script>
 <style lang="less" scoped>

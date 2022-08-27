@@ -18,6 +18,7 @@ export default defineConfig(({ command, mode }) => {
     base: '/',
     // 需要用到的插件数组
     plugins: [
+      
       // .vue 单文件组件
       vueSFC(),
 

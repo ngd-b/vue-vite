@@ -1,7 +1,9 @@
 // table
 import Table from './Table'
+// file preview
+import FilePreview from './FilePreview'
 
-const Components = [Table]
+const Components = [Table,FilePreview]
 // common components
 export default {
   install(app, options) {

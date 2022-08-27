@@ -443,6 +443,22 @@ const i18n = createI18n({
 app.use(i18n)
 ```
 
+### 文件预览，pdf、docx、pptx
+
+安装`pdfjs-dist`
+
+```sh
+npm install pdfjs-dist --save
+```
+
+由于 vite 没有 require 模块，导致不能使用。在 issue 中找到了替代
+重新安装,
+
+```sh
+# 支持es module
+npm install @bundled-es-modules/pdfjs-dist
+```
+
 ### Blog -系列文章
 
 [vite-vue3 开发环境搭建](https://juejin.cn/post/7121174783407947783)
