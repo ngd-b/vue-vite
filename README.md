@@ -424,7 +424,6 @@ import { createI18n } from 'vue-i18n'
 import enLocale from './locals/en.json'
 import cnLocale from './locals/cn.json'
 
-
 // 4. 国际化配置
 const i18n = createI18n({
   locale: 'zh',
@@ -440,10 +439,8 @@ const i18n = createI18n({
   },
 })
 
-
 // 国际化
 app.use(i18n)
-
 ```
 
 ### Blog -系列文章
@@ -458,7 +455,7 @@ app.use(i18n)
 
 1. `$router.push()` 后，在点击`/` 跳转路由不对
 
-2. 选择器，模糊匹配，比如`h1-h6` 携程`h[1-6]`
+2. 选择器，模糊匹配，比如`h1-h6` 可通过`h[1-6]`进行匹配
 
 3. CSS 选择器附加父元素或上一个兄弟元素条件
 
