@@ -14,6 +14,7 @@
         "dayjs": "^1.11.3",
         "element-plus": "^2.2.9",
         "highlight.js": "^11.6.0",
+        "mammoth": "^1.4.21",
         "markdown-it": "^13.0.1",
         "markdown-it-anchor": "^8.6.4",
         "node-html-parser": "^5.3.3",

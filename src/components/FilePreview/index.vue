@@ -7,13 +7,16 @@
 </template>
 <script setup>
 import { computed} from 'vue'
+import {FileType} from './enum'
 
 // 组件
-import PdfPreviewVue from './pdfPreview.vue';
+import PdfPreview from './pdfPreview.vue';
+import DocxPreview from './docxPreview.vue'
 
 // 组件类型映射
-const TypeMapComponent = {
-  pdf:PdfPreviewVue
+const FileTypeMapComponent = {
+  [FileType.pdf]:PdfPreview,
+  [FileType.docx]:DocxPreview
 }
 // props
 const props = defineProps({
@@ -23,10 +26,11 @@ const props = defineProps({
   }
 })
 // 动态组件
-const dynamicComponent = computed(()=>TypeMapComponent[props.type])
+const dynamicComponent = computed(()=>FileTypeMapComponent[props.type])
 </script>
 <script>
 export default {
   name:'HbFilePreview',
+  inheritAttrs:false
 }
 </script>

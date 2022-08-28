@@ -54,4 +54,8 @@ class Api {
   }
 }
 
+// 默认的服务地址
+export const ajax = new Api({
+  baseUrl:import.meta.env.BASE_URL
+})
 export default Api

@@ -445,6 +445,10 @@ app.use(i18n)
 
 ### 文件预览，pdf、docx、pptx
 
+除了 pdf，其他文件都是可编辑的，所以里面的内容可能会由于转换丢失样式等。计划想先把其他文件转成 pdf 然后在预览。
+
+#### `.pdf`预览
+
 安装`pdfjs-dist`
 
 ```sh
@@ -457,6 +461,12 @@ npm install pdfjs-dist --save
 ```sh
 # 支持es module
 npm install @bundled-es-modules/pdfjs-dist
+```
+
+#### `.docx`预览
+
+```sh
+npm install mammoth
 ```
 
 ### Blog -系列文章

@@ -13,6 +13,8 @@ import { createI18n } from 'vue-i18n'
 // locale
 import enLocale from './locals/en.json'
 import cnLocale from './locals/cn.json'
+// ajax
+import { ajax } from '@/ajax'
 
 // main app
 import App from './App.jsx'
@@ -37,7 +39,7 @@ app.config.warnHandler = (err, vm, info) => {
   console.warn(err, vm, info)
 }
 // 2. 全局属性设置
-app.config.globalProperties.$http = null
+app.config.globalProperties.$http = ajax
 // 3. 编译配置项
 app.config.compilerOptions.whitespace = 'preserve'
 
