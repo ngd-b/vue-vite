@@ -1,6 +1,8 @@
 <template>
   <div class="login-container">
-    <div class="login-bg" />
+    <div class="login-bg">
+      <img :src="LoginBg" />
+    </div>
     <div class="login-form">
       <h2>Vite+Vue3</h2>
       <el-form ref="formRef" :rules="rules" :model="form">
@@ -34,6 +36,7 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { uesSystemStore } from '@/store/system.js'
+import LoginBg from '@/assets/svg/login-bg.svg?url'
 
 //
 const loading = ref(false)
@@ -78,6 +81,12 @@ const handleSubmit = async (form) => {
   .login-container {
     background: #303133;
     height: 100%;
+    .login-bg {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 5%;
+    }
     .login-form {
       position: absolute;
       right: 300px;
@@ -97,7 +106,7 @@ const handleSubmit = async (form) => {
         color: #fff;
         font-size: 48px;
       }
-      :deep(.el-form)  {
+      :deep(.el-form) {
         width: 360px;
         .el-form-item__content {
           justify-content: center;

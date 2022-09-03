@@ -477,6 +477,8 @@ npm install mammoth
 
 [vue3 sfc 单文件组件中如何书写 JSX 语法？](https://blog.csdn.net/heroboyluck/article/details/126057882?spm=1001.2014.3001.5501)
 
+[vite 配置多页面应用](https://juejin.cn/post/7139101096810643492)
+
 ### QA 问题记录
 
 1. `$router.push()` 后，在点击`/` 跳转路由不对
