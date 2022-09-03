@@ -22,11 +22,11 @@
 </template>
 <script setup>
 // svg 图标
-import IconSvg from "./assets/cnodejs_light.svg";
+import IconSvg from './assets/cnodejs_light.svg';
 // 顶部导航
-import { navTabs } from "../routers";
-import { Search } from "@element-plus/icons-vue";
-import { useRouter } from "vue-router";
+import { navTabs } from '../routers';
+import { Search } from '@element-plus/icons-vue';
+import { useRouter } from 'vue-router';
 
 const router = useRouter();
 /**
@@ -38,7 +38,7 @@ const handleSearch = (val) => {
 const handleJumpMain = () => {
   // BUG:name 会调home
   // router.push({ name: "cnode" });
-  router.push({ path: "/cnode" });
+  router.push({ path: '/cnode' });
 };
 </script>
 <style lang="less" scoped>

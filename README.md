@@ -318,7 +318,7 @@ onMounted(() => {
 
 试了好几个，最后选择了这个，看着还不错。
 
-![](/public/imgs/highlightjs.png)
+![](/imgs/highlightjs.png)
 
 #### 安装`markdown-it-anchor` 以便更好的导航
 

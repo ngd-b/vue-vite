@@ -12,7 +12,7 @@ export default defineComponent({
     })
 
     return () => <>
-            <p>{name.value}</p>
-        </>
+      <p>{name.value}</p>
+    </>
   }
 })

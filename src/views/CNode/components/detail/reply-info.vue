@@ -9,7 +9,7 @@
         <span>{{ data.create_at }}</span>
       </div>
       <div>
-        <div v-html="data.content"></div>
+        <div v-html="data.content"/>
       </div>
     </div>
   </div>

@@ -5,9 +5,9 @@
 </template>
 
 <script setup>
-import {  computed } from "vue";
-import { Type, TypeMapName } from "./enum";
-import { useTabStore } from "../model";
+import {  computed } from 'vue';
+import { Type, TypeMapName } from './enum';
+import { useTabStore } from '../model';
 
 //
 const tabStore = useTabStore();
@@ -24,7 +24,7 @@ const props = defineProps({
 // const tabClass = ref()
 const tabClass = computed(() => {
   // return ["tab-info"];
-  return ["tab-info", props.isTop ? "top" : props.isGood ? "good" : props.tab];
+  return ['tab-info', props.isTop ? 'top' : props.isGood ? 'good' : props.tab];
 });
 // 问答模式边不展示ask
 const isAsk = computed(() => Type.Ask === tabStore.activeTab);

@@ -33,8 +33,6 @@
 </template>
 <script setup>
 import { ref, reactive } from 'vue'
-import { User, Hide } from '@element-plus/icons-vue'
-import { ElMessage } from 'element-plus'
 import { uesSystemStore } from '@/store/system.js'
 
 //
@@ -99,7 +97,7 @@ const handleSubmit = async (form) => {
         color: #fff;
         font-size: 48px;
       }
-      /deep/ .el-form {
+      :deep(.el-form)  {
         width: 360px;
         .el-form-item__content {
           justify-content: center;

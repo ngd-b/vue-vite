@@ -33,20 +33,20 @@ import RenderColumn from './renderColumn.vue'
  * 多层嵌套表格
  */
 export default {
-    name: 'NestedColumn',
-    components: {
-        RenderColumn,
+  name: 'NestedColumn',
+  components: {
+    RenderColumn,
+  },
+  props: {
+    // data: {
+    //   type: Array,
+    //   default: () => [],
+    // },
+    data: {
+      type: Object,
+      default: () => {},
     },
-    props: {
-        // data: {
-        //   type: Array,
-        //   default: () => [],
-        // },
-        data: {
-            type: Object,
-            default: () => {},
-        },
-    },
+  },
 }
 </script>
 

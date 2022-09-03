@@ -3,7 +3,7 @@
         <CNodeHeader />
         <main>
 
-            <router-view></router-view>
+            <router-view/>
         </main>
     </div>
 </template>
@@ -11,19 +11,19 @@
 //  组件
 import { Header as CNodeHeader } from './components/index.js'
 
-import "./index.less"
-    export default{
-        components:{
-            CNodeHeader
-        },
-        data(){
-            return {
-                name:'CNode',
-            }
-        },
-        mounted(){
-        },
-        methods:{
-        }
+import './index.less'
+export default{
+  components:{
+    CNodeHeader
+  },
+  data(){
+    return {
+      name:'CNode',
     }
+  },
+  mounted(){
+  },
+  methods:{
+  }
+}
 </script>
