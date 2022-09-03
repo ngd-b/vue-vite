@@ -15,7 +15,7 @@ const FileTypeMapFile = {
   [FileType.pdf]: pdfFile,
   [FileType.docx]: docxFile,
 }
-const FileTypeData = Object.values(FileType)
+const FileTypeData = Object.keys(FileTypeMapFile)
 export default defineComponent({
   setup(props, context) {
     // 当前活动的radio

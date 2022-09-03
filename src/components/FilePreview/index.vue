@@ -12,11 +12,13 @@ import {FileType} from './enum'
 // 组件
 import PdfPreview from './pdfPreview.vue';
 import DocxPreview from './docxPreview.vue'
+import MdPreviewVue  from './mdPreview.vue';
 
 // 组件类型映射
 const FileTypeMapComponent = {
   [FileType.pdf]:PdfPreview,
-  [FileType.docx]:DocxPreview
+  [FileType.docx]:DocxPreview,
+  [FileType.md]:MdPreviewVue
 }
 // props
 const props = defineProps({

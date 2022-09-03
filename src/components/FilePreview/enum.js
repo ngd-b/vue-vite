@@ -3,5 +3,7 @@ export const FileType = {
   pdf:'pdf',
   docx:'docx',
   pptx:'pptx',
-  excel:'excel'
+  excel:'excel',
+  // markdown
+  md:'md'
 }
