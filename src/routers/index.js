@@ -1,11 +1,11 @@
 import * as VueRouter from 'vue-router'
 import {
+  House,
+  ChromeFilled,
+  ElementPlus as ElementPlusIcon,
   Document,
-  Menu,
-  Location,
-  Setting,
+  Eleme,
   UserFilled,
-  HomeFilled
 } from '@element-plus/icons-vue'
 import { uesSystemStore } from '@/store/system.js'
 import { defineAsyncComponent } from 'vue'
@@ -70,7 +70,7 @@ const routes = [
     component: Home,
     meta: {
       title: 'home',
-      icon: Document,
+      icon: House,
     },
   },
   {
@@ -80,7 +80,7 @@ const routes = [
     redirect: '/',
     meta: {
       title: 'cnode',
-      icon: Menu,
+      icon: ChromeFilled,
     },
     children: [...CNodeRouters],
   },
@@ -90,7 +90,7 @@ const routes = [
     component: VueComponent,
     meta: {
       title: 'vue3',
-      icon: Location,
+      icon: Eleme,
     },
   },
   {
@@ -99,7 +99,7 @@ const routes = [
     component: ElementPlus,
     meta: {
       title: 'elementPlus',
-      icon: Setting,
+      icon: ElementPlusIcon,
     },
   },
   {
@@ -114,12 +114,12 @@ const routes = [
   {
     path: '/file-preview',
     name: 'filePreview',
-    component: () => import('@/views/filePreview'),
-    meta:{
-      title:'file-preview',
-      icon:HomeFilled
-    }
-  }
+    component: () => import('@/views/FilePreview'),
+    meta: {
+      title: 'file-preview',
+      icon: Document,
+    },
+  },
 ]
 
 /**
@@ -139,6 +139,7 @@ const router = VueRouter.createRouter({
 router.beforeEach((to, from, next) => {
   const systemStore = uesSystemStore()
 
+  console.log(to)
   systemStore.changeMenu(to.path)
   next()
 })

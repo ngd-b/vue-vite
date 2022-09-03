@@ -9,6 +9,7 @@ export const uesSystemStore = defineStore('system', {
     return {
       menu: '',
       lang: localStorage.getItem('lang') || 'zh',
+      menuIsCollapse:false,
     }
   },
   getters: {

@@ -1,11 +1,32 @@
 .app-container{
     height: 100%;
+   *{
+    transition: .3s;
+   }
     header{
         background-color:   #529b2e;
         color: #fff;
         line-height: 60px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        --el-header-padding:0;
+        .logo-name{
+            display: flex;
+            align-items: center;
+            width: 200px;
+            justify-content: space-between;
+            &.collapse{
+                width:64px;
+                justify-content: center;
+            }
+            .expandIcon{
+                cursor: pointer;
+            }
+        }
+    }
+    .el-aside{
+        overflow: hidden;
     }
     .el-container{
         height: calc(100% - 60px);

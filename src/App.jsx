@@ -2,6 +2,7 @@ import { ref, reactive, defineComponent, onMounted, computed } from 'vue'
 import { mapState } from 'vuex'
 import './App.less'
 import { uesSystemStore } from '@/store/system.js'
+import { Menu } from '@element-plus/icons-vue'
 
 // 路由地址
 import { routerMenus } from './routers'
@@ -24,12 +25,15 @@ export default defineComponent({
     const systemStore = uesSystemStore()
     // 当前切换语言
     const lang = computed(() => systemStore.lang)
+    // menuIsCollapse
+    const menuIsCollapse = computed(() => systemStore.menuIsCollapse)
 
     return {
       count,
       user,
       systemStore,
       lang,
+      menuIsCollapse,
     }
   },
   computed: {
@@ -48,6 +52,12 @@ export default defineComponent({
       this.$i18n.locale = val
       this.systemStore.transformLang(val)
     },
+    /**
+     * 按钮折叠
+     */
+    handleExpandMenu() {
+      this.systemStore.menuIsCollapse = !this.menuIsCollapse
+    },
   },
   render() {
     return (
@@ -55,7 +65,17 @@ export default defineComponent({
         {this.systemStore.showAside ? (
           <el-container class="app-container">
             <el-header>
-              <h1>{this.systemName}</h1>
+              <div class={['logo-name', this.menuIsCollapse ? 'collapse' : '']}>
+                {!this.menuIsCollapse && <h1>{this.systemName}</h1>}
+                <el-icon
+                  size={40}
+                  class="expandIcon"
+                  onClick={this.handleExpandMenu}
+                >
+                  <Menu />
+                </el-icon>
+              </div>
+
               <div className="lang-transform">
                 <el-switch
                   model-value={this.lang}
@@ -70,14 +90,13 @@ export default defineComponent({
               </div>
             </el-header>
             <el-container>
-              <el-aside width="200px">
+              <el-aside width={this.menuIsCollapse ? '64px' : '200px'}>
                 <el-menu
                   router
                   active-text-color="#ffd04b"
                   background-color="#545c64"
-                  class="el-menu-vertical-demo"
-                  default-active="2"
                   text-color="#fff"
+                  collapse={this.menuIsCollapse}
                 >
                   {routerMenus.map((item, index) => (
                     <el-menu-item key={index} index={item.path}>
