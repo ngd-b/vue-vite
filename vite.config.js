@@ -2,8 +2,7 @@
 import { defineConfig } from 'vite'
 import vueJSX from '@vitejs/plugin-vue-jsx'
 import vueSFC from '@vitejs/plugin-vue'
-// vue-i18n
-// import { vueI18n } from '@intlify/vite-plugin-vue-i18n'
+const { resolve } = require('path')
 // config
 export default defineConfig(({ command, mode }) => {
   /**
@@ -13,7 +12,7 @@ export default defineConfig(({ command, mode }) => {
 
   return {
     // 项目根目录，index.html 所在的目录
-    root: '',
+    root: resolve(__dirname,'src'),
     // 生产或开发环境下的基础路径
     base: '/',
     // 需要用到的插件数组
@@ -26,21 +25,16 @@ export default defineConfig(({ command, mode }) => {
       vueJSX({
         // ... @vue/babel-plugin-jsx 的配置
       }),
-      // vueI18n({
-      // vue-i18n legacy api
-      // compositionOnly: false,
-      //   include: import.meta.url,
-      // }),
     ],
     // 静态资源服务目录地址
-    publicDir: '',
+    publicDir: resolve(__dirname,'public'),
     // 存储缓存文件的目录地址
     cacheDir: '',
     //
     resolve: {
       // 设置文件目录别名
       alias: {
-        '@': '/src',
+        '@': './',
         vue: 'vue/dist/vue.esm-bundler.js',
       },
       //
@@ -83,7 +77,7 @@ export default defineConfig(({ command, mode }) => {
     build: {
       // ...
       // 指定输出目录
-      outDir: './dist',
+      outDir: resolve(__dirname,'dist'),
       // 指定静态资源存放目录
       assetsDir: '',
       // 启用、禁用css代码拆分
@@ -94,6 +88,10 @@ export default defineConfig(({ command, mode }) => {
       rollupOptions: {
         // ...
         // input:"src/index.js"
+        input: {
+          main: resolve(__dirname, 'src/index.html'),
+          login: resolve(__dirname, 'src/login/index.html')
+        }
       },
       // 构建目录自动清除
       emptyOutDir: false,

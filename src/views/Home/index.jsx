@@ -1,7 +1,7 @@
 import { defineComponent, onMounted, onUnmounted } from 'vue'
 
 // 将README.md导入进来
-import ReadME from '/README.md?raw'
+import ReadME from '../../../README.md?raw'
 
 export default defineComponent({
   props: {},

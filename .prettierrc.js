@@ -4,4 +4,6 @@ module.exports = {
   trailingComma: 'es5',
   vueIndentScriptAndStyle: true,
   useTabs: false,
+  vueIndentScriptAndStyle:true,
+  disableLanguages:['vue']
 }

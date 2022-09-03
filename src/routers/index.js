@@ -16,7 +16,7 @@ import { ElEmpty, ElLoading } from 'element-plus'
 import CNodeRouters from '@/views/CNode/routers'
 
 // page
-// import CNode from '@/views/CNode/index.vue'
+const Main = ()=> import('@/views/index.jsx')
 // home
 // const Home = { template: '<div>Home</div>' }
 const Home = () => import('@/views/Home')
@@ -58,12 +58,8 @@ const ElementPlus = () => import('@/views/ElementPlus')
 // vue3 api
 const VueComponent = () => import('@/views/Vue3')
 
-// routes
-const routes = [
-  {
-    path: '/',
-    redirect: 'home',
-  },
+// menu routes
+const menuRoutes = [
   {
     path: '/home',
     name: 'home',
@@ -121,14 +117,29 @@ const routes = [
     },
   },
 ]
+// routes
+const routes = [
+  {
+    path: '/',
+    redirect: 'home',
+  },
+  {
+    path: '/main',
+    name: 'main',
+    component: Main,
+    children:[
+      ...menuRoutes
+    ]
+  }
+]
 
 /**
  * 创建router实例
  *
  */
 const router = VueRouter.createRouter({
-  // history: VueRouter.createWebHashHistory(),
-  history: VueRouter.createWebHistory(),
+  history: VueRouter.createWebHashHistory(),
+  // history: VueRouter.createWebHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
     // 始终滚动到顶部
@@ -138,11 +149,15 @@ const router = VueRouter.createRouter({
 // 路由守卫
 router.beforeEach((to, from, next) => {
   const systemStore = uesSystemStore()
-
-  console.log(to)
+  
+  if(!systemStore.isLogin){
+    // 未登陆时，跳转登录页面
+    window.location.href = window.location.origin+'/login/'
+    next(false)
+  }
   systemStore.changeMenu(to.path)
   next()
 })
 export default router
 // 过滤
-export const routerMenus = routes.filter((item) => item.name)
+export const routerMenus = menuRoutes.filter((item) => item.name)

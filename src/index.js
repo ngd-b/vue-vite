@@ -11,19 +11,19 @@ import Components from '@/components/index.js'
 // vue-i18n
 import { createI18n } from 'vue-i18n'
 // locale
-import enLocale from './locals/en.json'
-import cnLocale from './locals/cn.json'
+import enLocale from '@/locals/en.json'
+import cnLocale from '@/locals/cn.json'
 // ajax
 import { ajax } from '@/ajax'
 
 // main app
-import App from './App.jsx'
+import App from '@/App.jsx'
 // router
-import router from './routers/index.js'
+import router from '@/routers/index.js'
 // store
-import store from './store/index'
+import store from '@/store/index'
 // css
-import './static/base.less'
+import '@/assets/css/base.less'
 
 // 创建app应用
 const app = createApp(App)
