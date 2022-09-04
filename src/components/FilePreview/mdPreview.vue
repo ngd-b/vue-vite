@@ -1,22 +1,20 @@
 <template>
     <div class="md-preview">
-        <el-row :gutter="30">
-            <el-col :span="18">
-                <div
-                className="markdown-content"
-                v-html="content"
-                />
-            </el-col>
-            <el-col v-show="showAnchor" :span="6">
-                <el-affix position="top" :offset="150">
-                <div
-                    ref={anchor}
-                    className="markdown-anchor"
-                    v-html="navData"
-                />
-                </el-affix>
-            </el-col>
-        </el-row>
+      <div class="content">
+        <div
+          className="markdown-content"
+          v-html="content"
+          />
+      </div>
+      <div v-show="showAnchor" class="anchor">
+        <el-affix position="top" :offset="100">
+          <div
+              ref={anchor}
+              className="markdown-anchor"
+              v-html="navData"
+          />
+        </el-affix>
+      </div>
     </div>
 </template>
 <script>
@@ -151,3 +149,20 @@ export default {
   },
 }
 </script>
+<style lang="less" scoped>
+.md-preview{
+  width:100%;
+  height:100%;
+  display: flex;
+  .content{
+    width:calc(100% - 150px);
+    flex:1;
+    padding:0 20px;
+  }
+  .anchor{
+    flex-basis: 450px;
+    padding-left:80px;
+    box-sizing: border-box;
+  }
+}
+</style>

@@ -10,10 +10,13 @@ import { FileType } from '@/components/FilePreview/enum.js'
 import pdfFile from '@/assets/pdf/file.pdf?url'
 // docx
 import docxFile from '@/assets/docx/file.docx?url'
+// md
+import ReadME from '../../../README.md?raw'
 
 const FileTypeMapFile = {
   [FileType.pdf]: pdfFile,
   [FileType.docx]: docxFile,
+  [FileType.md]: ReadME,
 }
 const FileTypeData = Object.keys(FileTypeMapFile)
 export default defineComponent({
@@ -46,6 +49,7 @@ export default defineComponent({
             type={this.activeTab}
             url={this.fileUrl}
             pageNum={10}
+            showAnchor={false}
           />
         </main>
       </div>
