@@ -1,28 +1,16 @@
 <template>
   <div class="bar-chart">
-    <el-row class="height-100">
-      <el-col :span="10" class="height-100">
+    <el-row>
+      <el-col :span="12">
         <div ref="chart" class="chart-box" />
-      </el-col>
-      <el-col :span="14" class="height-100">
-        <div class="option-box">
-          <chart-title @change="handleChangeOptions('title', $event)" />
-        </div>
       </el-col>
     </el-row>
   </div>
 </template>
 <script>
   import * as echarts from 'echarts'
-  import { ref, markRaw, toRaw } from 'vue'
-
-  // 组件
-  import ChartTitle from '../components/chartTitle'
-
+  import { ref, markRaw } from 'vue'
   export default {
-    components: {
-      ChartTitle,
-    },
     setup() {
       const chart = ref(null)
 
@@ -38,10 +26,10 @@
         this.chart = markRaw(echarts.init(this.$refs.chart))
 
         const options = {
-          legend: {
-            show: true,
+          title: {
+            text: '柱状图',
           },
-          tooltip: {
+          legend: {
             show: true,
           },
           xAxis: {
@@ -54,42 +42,26 @@
           series: [
             {
               name: '销量',
-              type: 'bar',
+              type: 'line',
               data: [5, 20, 36, 10, 10, 20],
             },
             {
               name: '利润',
-              type: 'bar',
+              type: 'line',
               data: [25, 120, 136, 90, 110, 120],
             },
           ],
         }
         this.chart.setOption(options)
       },
-      /**
-       * chart 图标属性change
-       */
-      handleChangeOptions(key, attr) {
-        if (!this.chart) {
-          return
-        }
-        this.chart.setOption({
-          [key]: toRaw(attr),
-        })
-      },
     },
   }
 </script>
 <style lang="less" scoped>
   .bar-chart {
-    height: 100%;
     .chart-box {
-      width: 100%;
+      width: 500px;
       height: 400px;
-    }
-    .option-box {
-      height: 100%;
-      overflow: auto;
     }
   }
 </style>

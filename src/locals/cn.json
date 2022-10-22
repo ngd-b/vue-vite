@@ -4,5 +4,11 @@
   "vue3": "vue3 API",
   "elementPlus": "elementPlus 自定义组件",
   "user": "用户模块",
-  "file-preview": "文件预览"
+  "file-preview": "文件预览",
+  "echarts":{
+    "echarts":"图表",
+    "bar":"柱状图",
+    "line":"折线图",
+    "pie":"饼图"
+  }
 }

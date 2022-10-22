@@ -3,11 +3,16 @@ import { mapState } from 'vuex'
 import { uesSystemStore } from '@/store/system.js'
 import { Menu } from '@element-plus/icons-vue'
 
+// 组件
+import NavMenu from '../components/NavMenu.vue'
 // 路由地址
 import { routerMenus } from '@/routers'
 // defineComponent  只返回传递给它的对象；
 // 此处IDE支持
 export default defineComponent({
+  components: {
+    NavMenu,
+  },
   props: {},
   setup(props, context) {
     /**
@@ -90,22 +95,7 @@ export default defineComponent({
             </el-header>
             <el-container>
               <el-aside width={this.menuIsCollapse ? '64px' : '200px'}>
-                <el-menu
-                  router
-                  active-text-color="#ffd04b"
-                  background-color="#545c64"
-                  text-color="#fff"
-                  collapse={this.menuIsCollapse}
-                >
-                  {routerMenus.map((item, index) => (
-                    <el-menu-item key={index} index={item.path}>
-                      <el-icon>
-                        <item.meta.icon />
-                      </el-icon>
-                      <span>{this.$t(item.meta.title)}</span>
-                    </el-menu-item>
-                  ))}
-                </el-menu>
+                <NavMenu routerData={routerMenus} />
               </el-aside>
               <el-main>
                 <router-view></router-view>

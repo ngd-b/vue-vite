@@ -4,5 +4,11 @@
   "vue3": "vue3 API",
   "elementPlus": "elementPlus",
   "user": "user",
-  "file-preview": "filePreview"
+  "file-preview": "filePreview",
+  "echarts":{
+    "echarts":"echarts",
+    "bar":"bar",
+    "line":"line",
+    "pie":"pie"
+  }
 }

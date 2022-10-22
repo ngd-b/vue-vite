@@ -5,7 +5,7 @@ module.exports = {
     'import/no-absolute-path': 'off',
     'vue/multi-word-component-names': 'off',
     'vue/no-v-html': 'off',
-    indent: ['error', 2],
+    // indent: ['error', 2],
     'max-len': ['error', { code: 120, ignoreUrls: true }],
     'no-confusing-arrow': ['error', { allowParens: false }],
     'no-mixed-operators': 'error',

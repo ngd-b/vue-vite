@@ -6,6 +6,7 @@ import {
   Document,
   Eleme,
   UserFilled,
+  PieChart,
 } from '@element-plus/icons-vue'
 import { uesSystemStore } from '@/store/system.js'
 import { defineAsyncComponent } from 'vue'
@@ -16,7 +17,7 @@ import { ElEmpty, ElLoading } from 'element-plus'
 import CNodeRouters from '@/views/CNode/routers'
 
 // page
-const Main = ()=> import('@/views/index.jsx')
+const Main = () => import('@/views/index.jsx')
 // home
 // const Home = { template: '<div>Home</div>' }
 const Home = () => import('@/views/Home')
@@ -67,6 +68,7 @@ const menuRoutes = [
     meta: {
       title: 'home',
       icon: House,
+      isMenu: true,
     },
   },
   {
@@ -77,8 +79,15 @@ const menuRoutes = [
     meta: {
       title: 'cnode',
       icon: ChromeFilled,
+      isMenu: true,
     },
-    children: [...CNodeRouters],
+    children: CNodeRouters.map((item) => ({
+      ...item,
+      meta: {
+        ...item.meta,
+        isMenu: false,
+      },
+    })),
   },
   {
     path: '/vue3',
@@ -87,6 +96,7 @@ const menuRoutes = [
     meta: {
       title: 'vue3',
       icon: Eleme,
+      isMenu: true,
     },
   },
   {
@@ -96,6 +106,7 @@ const menuRoutes = [
     meta: {
       title: 'elementPlus',
       icon: ElementPlusIcon,
+      isMenu: true,
     },
   },
   {
@@ -105,6 +116,7 @@ const menuRoutes = [
     meta: {
       title: 'user',
       icon: UserFilled,
+      isMenu: true,
     },
   },
   {
@@ -114,7 +126,47 @@ const menuRoutes = [
     meta: {
       title: 'file-preview',
       icon: Document,
+      isMenu: true,
     },
+  },
+  {
+    path: '/echarts',
+    name: 'echarts',
+    meta: {
+      title: 'echarts.echarts',
+      icon: PieChart,
+      isMenu: true,
+    },
+    redirect: '/echarts/bar',
+    children: [
+      {
+        path: '/echarts/bar',
+        name: 'bar',
+        component: () => import('@/views/Echarts/bar'),
+        meta: {
+          title: 'echarts.bar',
+          isMenu: true,
+        },
+      },
+      {
+        path: '/echarts/line',
+        name: 'line',
+        component: () => import('@/views/Echarts/line'),
+        meta: {
+          title: 'echarts.line',
+          isMenu: true,
+        },
+      },
+      {
+        path: '/echarts/pie',
+        name: 'pie',
+        component: () => import('@/views/Echarts/pie'),
+        meta: {
+          title: 'echarts.pie',
+          isMenu: true,
+        },
+      },
+    ],
   },
 ]
 // routes
@@ -127,10 +179,8 @@ const routes = [
     path: '/main',
     name: 'main',
     component: Main,
-    children:[
-      ...menuRoutes
-    ]
-  }
+    children: [...menuRoutes],
+  },
 ]
 
 /**
@@ -149,10 +199,10 @@ const router = VueRouter.createRouter({
 // 路由守卫
 router.beforeEach((to, from, next) => {
   const systemStore = uesSystemStore()
-  
-  if(!systemStore.isLogin){
+
+  if (!systemStore.isLogin) {
     // 未登陆时，跳转登录页面
-    window.location.href = window.location.origin+'/login/'
+    window.location.href = window.location.origin + '/login/'
     next(false)
   }
   systemStore.changeMenu(to.path)
