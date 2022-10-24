@@ -479,6 +479,8 @@ npm install mammoth
 
 [vite 配置多页面应用](https://juejin.cn/post/7139101096810643492)
 
+[pdf、markdown、docx 文件预览](https://blog.csdn.net/heroboyluck/article/details/127502521?spm=1001.2014.3001.5502)
+
 ### QA 问题记录
 
 1. `$router.push()` 后，在点击`/` 跳转路由不对

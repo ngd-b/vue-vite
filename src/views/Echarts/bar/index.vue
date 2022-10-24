@@ -38,9 +38,6 @@
         this.chart = markRaw(echarts.init(this.$refs.chart))
 
         const options = {
-          legend: {
-            show: true,
-          },
           tooltip: {
             show: true,
           },
@@ -73,6 +70,7 @@
         if (!this.chart) {
           return
         }
+        console.log(toRaw(attr))
         this.chart.setOption({
           [key]: toRaw(attr),
         })
