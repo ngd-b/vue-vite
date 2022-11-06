@@ -1,6 +1,5 @@
 <template>
   <div class="bar-chart">
-    123
     <el-row>
       <el-col :span="12">
         <div ref="chart" class="chart-box" />
@@ -11,8 +10,10 @@
 <script>
   import * as echarts from 'echarts'
   import { ref, markRaw } from 'vue'
+
+  // import sqMapData from './components/jiangsu/suqian.json'
+
   export default {
-    name: 'EchartsPie',
     setup() {
       const chart = ref(null)
 
@@ -24,42 +25,39 @@
       this.initChart()
     },
     methods: {
-      initChart() {
+      async initChart() {
         this.chart = markRaw(echarts.init(this.$refs.chart))
-
+        // 宿迁地图
+        const res = await this.$http.request({
+          type: 'get',
+          url: 'https://geo.datav.aliyun.com/areas_v3/bound/320000_full.json',
+        })
+        console.log(res)
+        echarts.registerMap('suqian', { geoJSON: res })
         const options = {
           title: {
-            text: '柱状图',
-          },
-          legend: {
-            show: true,
-            left: 0,
+            text: '地图',
           },
           xAxis: {
-            type: 'category',
-            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+            show: false,
           },
           yAxis: {
-            type: 'value',
-          },
-          grid: {
-            top: 200,
+            show: false,
           },
           series: [
             {
-              name: '销量',
-              type: 'pie',
-              center: ['50%', '25%'],
-              radius: '40%',
-              labelLine: {
-                show: false,
+              name: '地图',
+              type: 'map',
+              map: 'suqian',
+              label: {
+                show: true,
+                color: '#fff',
               },
-              data: [5, 20, 36, 10, 10, 20],
-            },
-            {
-              name: '利润',
-              type: 'bar',
-              data: [25, 120, 136, 90, 110, 120],
+              itemStyle: {
+                color: 'rgba(23,34,23,1)',
+                areaColor: 'rgba(23,134,23,0.8)',
+              },
+              data: [10, 23, 34],
             },
           ],
         }

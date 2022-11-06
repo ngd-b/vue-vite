@@ -166,6 +166,15 @@ const menuRoutes = [
           isMenu: true,
         },
       },
+      {
+        path: '/echarts/map',
+        name: 'map',
+        component: () => import('@/views/Echarts/map'),
+        meta: {
+          title: 'echarts.map',
+          isMenu: true,
+        },
+      },
     ],
   },
 ]

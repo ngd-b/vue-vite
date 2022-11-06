@@ -9,6 +9,7 @@
     "echarts":"echarts",
     "bar":"bar",
     "line":"line",
-    "pie":"pie"
+    "pie":"pie",
+    "map":"map"
   }
 }

@@ -12,10 +12,10 @@ import Axios from 'axios'
  */
 
 class Api {
-  constructor (config) {
+  constructor(config) {
     const options = {
       timeout: 6000,
-      ...config
+      ...config,
     }
 
     this.ajax = Axios.create(options)
@@ -25,37 +25,43 @@ class Api {
     this.interceptorsResponse()
   }
 
-  interceptorsRequest () {
-    this.ajax.interceptors.request.use(function (config) {
-      console.log('req:', config)
-      config.method = config.type
-      if (config.method === 'get') {
-        config.params = config.data
+  interceptorsRequest() {
+    this.ajax.interceptors.request.use(
+      function (config) {
+        console.log('req:', config)
+        config.method = config.type
+        if (config.method === 'get') {
+          config.params = config.data
+        }
+        return config
+      },
+      function (error) {
+        return Promise.reject(error)
       }
-      return config
-    }, function (error) {
-      return Promise.reject(error)
-    })
+    )
   }
 
-  interceptorsResponse () {
-    this.ajax.interceptors.response.use(function (res) {
-      if (res.status === 200) {
-        return res.data
+  interceptorsResponse() {
+    this.ajax.interceptors.response.use(
+      function (res) {
+        if (res.status === 200) {
+          return res.data
+        }
+        return Promise.reject(res)
+      },
+      function (error) {
+        return Promise.reject(error)
       }
-      return Promise.reject(res)
-    }, function (error) {
-      return Promise.reject(error)
-    })
+    )
   }
 
-  request (params) {
-    return this.ajax(params)
+  request(params) {
+    return Promise.resolve(this.ajax(params))
   }
 }
 
 // 默认的服务地址
 export const ajax = new Api({
-  baseUrl:import.meta.env.BASE_URL
+  baseUrl: import.meta.env.BASE_URL,
 })
 export default Api
