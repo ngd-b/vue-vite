@@ -1,4 +1,3 @@
-
 /**
  * 定义路由
  */
@@ -18,52 +17,52 @@ const User = () => import('../components/user')
 export const navTabs = [
   {
     path: '',
-    name: 'main',
+    name: 'cnode-main',
     component: List,
     meta: {
-      title: '首页'
-    }
+      title: '首页',
+    },
   },
   {
     path: 'leanring',
     name: 'leanring',
     component: Learning,
     meta: {
-      title: '新手入门'
-    }
+      title: '新手入门',
+    },
   },
   {
     path: 'api',
     name: 'api',
     component: API,
     meta: {
-      title: 'API'
-    }
+      title: 'API',
+    },
   },
   {
     path: 'about',
     name: 'about',
     component: About,
     meta: {
-      title: '关于'
-    }
+      title: '关于',
+    },
   },
   {
     path: 'register',
     name: 'register',
     component: null,
     meta: {
-      title: '注册'
-    }
+      title: '注册',
+    },
   },
   {
     path: 'login',
     name: 'login',
     component: null,
     meta: {
-      title: '登录'
-    }
-  }
+      title: '登录',
+    },
+  },
 ]
 
 export default [
@@ -73,15 +72,15 @@ export default [
     name: 'detail',
     component: Detail,
     meta: {
-      title: '详情'
-    }
+      title: '详情',
+    },
   },
   {
     path: 'user/$',
     name: 'userDetail',
     component: User,
     meta: {
-      title: '用户详情'
-    }
-  }
+      title: '用户详情',
+    },
+  },
 ]

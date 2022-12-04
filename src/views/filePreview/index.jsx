@@ -7,8 +7,8 @@ import { FileType } from '@/components/FilePreview/enum.js'
 // pptx
 // import pptFile from '@/assets/ppt/file.pptx?url'
 // pdf
-// import pdfFile from '@/assets/pdf/file.pdf?url'
-import pdfFile from './1666678982557.pdf'
+import pdfFile from '@/assets/pdf/file.pdf?url'
+// import pdfFile from './1666678982557.pdf'
 // docx
 import docxFile from '@/assets/docx/file.docx?url'
 // md

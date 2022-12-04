@@ -25,7 +25,7 @@ const Home = () => import('@/views/Home')
 // const CNode = ()=>import("@/views/CNode/index.vue")
 const CNode = defineAsyncComponent({
   // 工厂函数
-  loader: () => import('@/views/CNode/index.vue'),
+  loader: () => import('../views/CNode/index.vue'),
   // 加载时使用的组件
   loadingComponent: ElLoading,
   // 出错时使用的组件
@@ -176,6 +176,16 @@ const menuRoutes = [
         },
       },
     ],
+  },
+  {
+    path: '/video-preview',
+    name: 'videoPreview',
+    component: () => import('@/views/Video'),
+    meta: {
+      title: 'video-preview',
+      icon: Document,
+      isMenu: true,
+    },
   },
 ]
 // routes

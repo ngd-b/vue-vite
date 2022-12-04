@@ -5,6 +5,7 @@
   "elementPlus": "elementPlus",
   "user": "user",
   "file-preview": "filePreview",
+  "video-preview":"video-preview",
   "echarts":{
     "echarts":"echarts",
     "bar":"bar",

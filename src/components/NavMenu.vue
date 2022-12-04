@@ -20,7 +20,7 @@
           </template>
 
           <el-menu-item
-            v-for="info in filterNavData(item.children)"
+            v-for="info in item.children"
             :key="info.name"
             :index="info.path"
           >
@@ -58,7 +58,20 @@
     },
     methods: {
       filterNavData(data) {
-        return data.filter((item) => item.meta.isMenu)
+        const menus = data.reduce((arr, item) => {
+          const { children } = item
+
+          if (!item.meta.isMenu) {
+            return arr
+          }
+          if (children && children.length > 0) {
+            item.children = this.filterNavData(item.children)
+          }
+          console.log(item)
+          arr.push(item)
+          return arr
+        }, [])
+        return menus
       },
     },
   }
