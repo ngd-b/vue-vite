@@ -7,6 +7,7 @@ import {
   Eleme,
   UserFilled,
   PieChart,
+  EditPen,
 } from '@element-plus/icons-vue'
 import { uesSystemStore } from '@/store/system.js'
 import { defineAsyncComponent } from 'vue'
@@ -184,6 +185,16 @@ const menuRoutes = [
     meta: {
       title: 'video-preview',
       icon: Document,
+      isMenu: true,
+    },
+  },
+  {
+    path: '/file-editor',
+    name: 'fileEditor',
+    component: () => import('@/views/FileEditor'),
+    meta: {
+      title: 'file-editor',
+      icon: EditPen,
       isMenu: true,
     },
   },

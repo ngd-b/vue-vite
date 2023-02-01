@@ -67,7 +67,7 @@
           if (children && children.length > 0) {
             item.children = this.filterNavData(item.children)
           }
-          console.log(item)
+          // console.log(item)
           arr.push(item)
           return arr
         }, [])

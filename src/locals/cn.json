@@ -6,6 +6,7 @@
   "user": "用户模块",
   "file-preview": "文件预览",
   "video-preview":"视频播放",
+  "file-editor":"文件编辑",
   "echarts":{
     "echarts":"图表",
     "bar":"柱状图",

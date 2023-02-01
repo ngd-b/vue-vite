@@ -6,6 +6,7 @@
   "user": "user",
   "file-preview": "filePreview",
   "video-preview":"video-preview",
+  "file-editor":"file-editor",
   "echarts":{
     "echarts":"echarts",
     "bar":"bar",
