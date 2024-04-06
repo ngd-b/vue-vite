@@ -23,7 +23,8 @@
     "preview": "npx vite preview",
     "lint": "eslint --ext .js,.jsx,.vue ./src",
     "lint-staged": "npx lint-staged",
-    "prepare": "husky install"
+    "commitlint": "commitlint --edit",
+    "prepare": "husky"
   },
   "dependencies": {
     "@bundled-es-modules/pdfjs-dist": "^2.5.207-rc1",
