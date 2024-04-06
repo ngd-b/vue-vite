@@ -23,16 +23,14 @@ class Api {
     // 拦截请求、响应
     this.interceptorsRequest()
     this.interceptorsResponse()
+
+    // 支持原方式请求
+    return this.ajax
   }
 
   interceptorsRequest() {
     this.ajax.interceptors.request.use(
       function (config) {
-        console.log('req:', config)
-        config.method = config.type
-        if (config.method === 'get') {
-          config.params = config.data
-        }
         return config
       },
       function (error) {

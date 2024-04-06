@@ -4,7 +4,11 @@ node_modules
 
 # build
 dist
+dist.zip
 
 # file
 
 .DS_Store
+
+auto-imports.d.ts
+components.d.ts

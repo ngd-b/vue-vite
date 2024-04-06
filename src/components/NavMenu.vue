@@ -38,47 +38,49 @@
   </div>
 </template>
 <script>
-  import { uesSystemStore } from '@/store/system.js'
-  import { computed } from 'vue'
-  export default {
-    props: {
-      routerData: {
-        type: Array,
-        default: () => [],
-      },
+import { uesSystemStore } from "@/store/system.js";
+import { computed } from "vue";
+export default {
+  props: {
+    routerData: {
+      type: Array,
+      default: () => [],
     },
-    setup() {
-      const systemStore = uesSystemStore()
-      // menuIsCollapse
-      const menuIsCollapse = computed(() => systemStore.menuIsCollapse)
+  },
+  setup() {
+    const systemStore = uesSystemStore();
+    // menuIsCollapse
+    const menuIsCollapse = computed(() => systemStore.menuIsCollapse);
 
-      return {
-        menuIsCollapse,
-      }
-    },
-    methods: {
-      filterNavData(data) {
-        const menus = data.reduce((arr, item) => {
-          const { children } = item
+    return {
+      menuIsCollapse,
+    };
+  },
+  methods: {
+    filterNavData(data) {
+      const menus = data.reduce((arr, item) => {
+        const { children } = item;
 
-          if (!item.meta.isMenu) {
-            return arr
-          }
-          if (children && children.length > 0) {
-            item.children = this.filterNavData(item.children)
-          }
-          // console.log(item)
-          arr.push(item)
-          return arr
-        }, [])
-        return menus
-      },
+        if (!item.meta.isMenu) {
+          return arr;
+        }
+        if (children && children.length > 0) {
+          item.children = this.filterNavData(item.children);
+        }
+        // console.log(item)
+        arr.push(item);
+        return arr;
+      }, []);
+      return menus;
     },
-  }
+  },
+};
 </script>
 <style lang="less" scoped>
-  .nav-menu {
-    width: 100%;
-    height: 100%;
-  }
+.nav-menu {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #545c64;
+}
 </style>
