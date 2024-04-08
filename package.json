@@ -1,7 +1,6 @@
 {
   "name": "vue3-vite",
   "version": "1.0.0",
-  "type": "module",
   "description": "vite+vue3 template. some libs",
   "keywords": [
     "vue3",
