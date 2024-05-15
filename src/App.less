@@ -1,40 +1,37 @@
-.app-container{
-    height: 100%;
-   *{
-    transition: .3s;
-   }
-    header{
-        background-color:   #529b2e;
-        color: #fff;
-        line-height: 60px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        --el-header-padding: 0 15px;
-        .logo-name{
-            display: flex;
-            align-items: center;
-            width: 200px;
-            justify-content: space-evenly;
-            &.collapse{
-                width:64px;
-                justify-content: center;
-            }
-            .expandIcon{
-                cursor: pointer;
-            }
-        }
+.app-container {
+  height: 100%;
+  * {
+    transition: 0.3s;
+  }
+  header {
+    background-color: #529b2e;
+    color: #fff;
+    line-height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    --el-header-padding: 0 15px;
+    .logo-name {
+      display: flex;
+      align-items: center;
+      width: 200px;
+      justify-content: space-evenly;
+      &.collapse {
+        width: 64px;
+        justify-content: center;
+      }
+      .expandIcon {
+        cursor: pointer;
+      }
     }
-    .el-aside{
-        overflow: hidden;
+  }
+  .el-aside {
+    overflow: hidden;
+  }
+  .el-container {
+    height: calc(100% - 60px);
+    .el-aside {
+      height: 100%;
     }
-    .el-container{
-        height: calc(100% - 60px);
-        .el-aside{
-            height: 100%;
-            .el-menu{
-                height: 100%;
-            }
-        }
-    }
+  }
 }

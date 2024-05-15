@@ -16,9 +16,9 @@ npm install vite
 
 ```js
 // 类型提示
-import { defineConfig } from 'vite'
-import vueJSX from '@vitejs/plugin-vue-jsx'
-import vueSFC from '@vitejs/plugin-vue'
+import { defineConfig } from "vite";
+import vueJSX from "@vitejs/plugin-vue-jsx";
+import vueSFC from "@vitejs/plugin-vue";
 
 // config
 export default defineConfig(({ command, mode }) => {
@@ -29,9 +29,9 @@ export default defineConfig(({ command, mode }) => {
 
   return {
     // 项目根目录，index.html 所在的目录
-    root: '',
+    root: "",
     // 生产或开发环境下的基础路径
-    base: '/',
+    base: "/",
     // 需要用到的插件数组
     plugins: [
       // .vue 单文件组件
@@ -42,17 +42,17 @@ export default defineConfig(({ command, mode }) => {
       }),
     ],
     // 静态资源服务目录地址
-    publicDir: '',
+    publicDir: "",
     // 存储缓存文件的目录地址
-    cacheDir: '',
+    cacheDir: "",
     //
     resolve: {
       // 设置文件目录别名
       alias: {
-        '@': '/src',
+        "@": "/src",
       },
       //
-      extensions: ['.js', '.jsx', '.vue'],
+      extensions: [".js", ".jsx", ".vue"],
     },
     //
     css: {
@@ -74,16 +74,16 @@ export default defineConfig(({ command, mode }) => {
       // 在react组件中无需导入react
       // jsxInject: `import React from 'react'`,
       // vue 使用jsx
-      jsxFactory: 'h',
-      jsxFragment: 'Fragment',
+      jsxFactory: "h",
+      jsxFragment: "Fragment",
     },
     // 静态资源处理
-    assetsInclude: '',
+    assetsInclude: "",
     // 开发服务器选项
     server: {
       // ...
-      host: '127.0.0.1',
-      port: '8081',
+      host: "127.0.0.1",
+      port: "8081",
       // 项目启动后自动打开浏览器
       open: true,
     },
@@ -91,13 +91,13 @@ export default defineConfig(({ command, mode }) => {
     build: {
       // ...
       // 指定输出目录
-      outDir: './dist',
+      outDir: "./dist",
       // 指定静态资源存放目录
-      assetsDir: '',
+      assetsDir: "",
       // 启用、禁用css代码拆分
       cssCodeSplit: true,
       // 构建是否生成source map文件
-      sourcemap: 'inline',
+      sourcemap: "inline",
       // rollup 配置打包项
       rollupOptions: {
         // ...
@@ -109,12 +109,12 @@ export default defineConfig(({ command, mode }) => {
     // 依赖优化配置项
     optimizeDeps: {
       // 依赖构建入口
-      entries: '',
+      entries: "",
       // 排除不需要构建的依赖项
       exclude: [],
     },
-  }
-})
+  };
+});
 ```
 
 ### 支持 vue 开发
@@ -149,11 +149,11 @@ export default{
   <div></div>
 </template>
 <script lang="jsx">
-  export default {
-    data() {
-      return {}
-    },
-  }
+export default {
+  data() {
+    return {};
+  },
+};
 </script>
 ```
 
@@ -164,16 +164,16 @@ export default{
 支持 JSX 语法
 
 ```jsx
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
   data() {
-    return {}
+    return {};
   },
   render() {
-    return <></>
+    return <></>;
   },
-})
+});
 ```
 
 ### 安装 `vue-router`
@@ -192,46 +192,46 @@ npm install pinia
 在`setup` 或者 JSX 响应式模式中，使用
 
 ```js
-import { uesSystemStore } from '@/store/system.js'
-import { computed } from 'vue'
+import { uesSystemStore } from "@/store/system.js";
+import { computed } from "vue";
 
 // ... other
 
 export default defineComponent({
   setup(props, context) {
     // 获取到pinia的数据
-    const systemStore = uesSystemStore()
+    const systemStore = uesSystemStore();
 
     // 计算值
-    const name = computed(() => systemStore.systemName)
+    const name = computed(() => systemStore.systemName);
     return {
       name,
       systemStore,
-    }
+    };
   },
-})
+});
 ```
 
 在传统的`.vue`模板中
 
 ```js
-import { useTabStore } from '../../model'
+import { useTabStore } from "../../model";
 
 export default {
   data() {
     // 此处可创建store实例
-    this.tabStore = useTabStore()
+    this.tabStore = useTabStore();
     return {
       // list data
       data: [],
-    }
+    };
   },
   computed: {
     activeTab() {
-      return this.tabStore.activeTab
+      return this.tabStore.activeTab;
     },
   },
-}
+};
 ```
 
 ### 安装 `element-plus`
@@ -240,14 +240,14 @@ export default {
 
 ```js
 // element
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
-import { zhCn } from 'element-plus/es/locale/index.js'
+import ElementPlus from "element-plus";
+import "element-plus/dist/index.css";
+import { zhCn } from "element-plus/es/locale/index.js";
 
 // ....
 
 // element 国际化设置
-app.use(ElementPlus, { size: 'small', zIndex: 3000, local: zhCn })
+app.use(ElementPlus, { size: "small", zIndex: 3000, local: zhCn });
 ```
 
 ### 安装 `axios`
@@ -262,11 +262,11 @@ app.use(ElementPlus, { size: 'small', zIndex: 3000, local: zhCn })
 
 ```js
 // markdown
-import MarkdownIt from 'markdown-it'
-import hljs from 'highlight.js'
+import MarkdownIt from "markdown-it";
+import hljs from "highlight.js";
 
 // 将README.md导入进来
-import ReadME from '/README.md?raw'
+import ReadME from "/README.md?raw";
 
 // 生命周期，挂载
 onMounted(() => {
@@ -276,7 +276,7 @@ onMounted(() => {
     xhtmlOut: false, // Use '/' to close single tags (<br />).
     // This is only for full CommonMark compatibility.
     breaks: false, // Convert '\n' in paragraphs into <br>
-    langPrefix: 'language-', // CSS language prefix for fenced blocks. Can be
+    langPrefix: "language-", // CSS language prefix for fenced blocks. Can be
     // useful for external highlighters.
     linkify: false, // Autoconvert URL-like text to links
 
@@ -288,7 +288,7 @@ onMounted(() => {
     //
     // For example, you can use '«»„“' for Russian, '„“‚‘' for German,
     // and ['«\xA0', '\xA0»', '‹\xA0', '\xA0›'] for French (including nbsp).
-    quotes: '“”‘’',
+    quotes: "“”‘’",
     highlight: (str, lang) => {
       if (lang && hljs.getLanguage(lang)) {
         try {
@@ -298,20 +298,20 @@ onMounted(() => {
               language: lang,
               ignoreIllegals: true,
             }).value +
-            '</code></pre>'
-          )
+            "</code></pre>"
+          );
         } catch (__) {}
       }
 
       return (
-        '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>'
-      )
+        '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + "</code></pre>"
+      );
     },
-  })
+  });
   // llink
-  md.linkify.set({ fuzzyEmail: false })
-  content.value = md.render(ReadME)
-})
+  md.linkify.set({ fuzzyEmail: false });
+  content.value = md.render(ReadME);
+});
 ```
 
 加载个样式，有很多可供挑选 在`import "highlight.js/styles/atom-one-dark.css"`
@@ -364,8 +364,8 @@ vscode 安装`Prettier - Code formatter`, 设置配置；`format on save` and `f
 
 ```js
 module.exports = {
-  extends: ['standard', 'plugin:vue/vue3-recommended', 'prettier'],
-}
+  extends: ["standard", "plugin:vue/vue3-recommended", "prettier"],
+};
 ```
 
 #### `husky` git hooks 管理
@@ -419,14 +419,14 @@ npm i --save-dev @intlify/vite-plugin-vue-i18n
 
 ```js
 // vue-i18n
-import { createI18n } from 'vue-i18n'
+import { createI18n } from "vue-i18n";
 // locale
-import enLocale from './locals/en.json'
-import cnLocale from './locals/cn.json'
+import enLocale from "./locals/en.json";
+import cnLocale from "./locals/cn.json";
 
 // 4. 国际化配置
 const i18n = createI18n({
-  locale: 'zh',
+  locale: "zh",
   messages: {
     en: {
       ...en,
@@ -437,10 +437,10 @@ const i18n = createI18n({
       ...cnLocale,
     },
   },
-})
+});
 
 // 国际化
-app.use(i18n)
+app.use(i18n);
 ```
 
 ### 文件预览，pdf、docx、pptx
@@ -469,6 +469,30 @@ npm install @bundled-es-modules/pdfjs-dist
 npm install mammoth
 ```
 
+### `polyfills` 有使用 node 核心库 API 的依赖
+
+```sh
+$> npm i vite-plugin-node-polyfills
+```
+
+在`vite.config.js`增加配置
+
+### `Element-plus`按需加载，无需全量
+
+移除掉`/src/index.js`里的 Element-plus 导入
+
+安装依赖
+
+```sh
+$> npm i unplugin-auto-import unplugin-vue-components --save-dev
+```
+
+增加配置`vite.config.js`.
+
+> 使用了`.jsx`文件作为页面组件，不能生效，`.vue`单位件下是可以的，所以选择其中之一的方式进行书写。
+
+全局注册和按需加载不能同时使用，避免造成冲突。
+
 ### Blog -系列文章
 
 [vite-vue3 开发环境搭建](https://juejin.cn/post/7121174783407947783)
@@ -492,3 +516,17 @@ npm install mammoth
 4. 使用 a 标签进行导航 md 时，地址会映射到 hash 路由上
 
 5. 使用 vs code 提交同步更改时，没有执行 git hooks
+
+6. 依赖更新，移除掉`package.json`相关依赖，重新安装
+
+主要依赖：
+
+```sh
+$> npm i vue vite @vitejs/plugin-vue @vitejs/plugin-vue-jsx axios dayjs element-plus pinia  vue-router  vuex vue-i18n
+```
+
+`--save-dev`依赖
+
+```sh
+$> npm i eslint eslint-config-prettier eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-vue husky less lint-staged
+```

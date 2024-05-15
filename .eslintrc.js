@@ -1,34 +1,34 @@
 module.exports = {
-  extends: ['standard', 'plugin:vue/vue3-recommended', 'prettier'],
+  extends: ["standard", "plugin:vue/vue3-recommended", "prettier"],
   rules: {
-    'no-unused-vars': 'warn',
-    'import/no-absolute-path': 'off',
-    'vue/multi-word-component-names': 'off',
-    'vue/no-v-html': 'off',
+    "no-unused-vars": "warn",
+    "import/no-absolute-path": "off",
+    "vue/multi-word-component-names": "off",
+    "vue/no-v-html": "off",
     // indent: ['error', 2],
-    'max-len': ['error', { code: 120, ignoreUrls: true }],
-    'no-confusing-arrow': ['error', { allowParens: false }],
-    'no-mixed-operators': 'error',
-    'no-tabs': ['error', { allowIndentationTabs: true }],
-    'no-unexpected-multiline': 'error',
+    "max-len": ["error", { code: 120, ignoreUrls: true }],
+    "no-confusing-arrow": ["error", { allowParens: false }],
+    "no-mixed-operators": "error",
+    "no-tabs": ["error", { allowIndentationTabs: true }],
+    "no-unexpected-multiline": "error",
     quotes: [
-      'error',
-      'single',
+      "off",
+      "single",
       { avoidEscape: true, allowTemplateLiterals: false },
     ],
-    'vue/html-self-closing': [
-      'error',
+    "vue/html-self-closing": [
+      "error",
       {
         html: {
-          void: 'any',
+          void: "any",
         },
       },
     ],
-    'vue/valid-v-slot': [
-      'warn',
+    "vue/valid-v-slot": [
+      "warn",
       {
         allowModifiers: false,
       },
     ],
   },
-}
+};
