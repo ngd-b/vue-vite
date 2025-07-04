@@ -3,10 +3,12 @@ import { defineConfig } from "vite";
 import vueJSX from "@vitejs/plugin-vue-jsx";
 import vueSFC from "@vitejs/plugin-vue";
 import { resolve } from "path";
-import { nodePolyfills } from "vite-plugin-node-polyfills";
-// import AutoImport from "unplugin-auto-import/vite";
-// import Components from "unplugin-vue-components/vite";
-// import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
+
+import Icons from "unplugin-icons/vite";
+import IconsResolver from "unplugin-icons/resolver";
+import AutoImport from "unplugin-auto-import/vite";
+import Components from "unplugin-vue-components/vite";
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
 // config
 export default defineConfig(({ command, mode }) => {
@@ -22,7 +24,6 @@ export default defineConfig(({ command, mode }) => {
     base: "",
     // 需要用到的插件数组
     plugins: [
-      nodePolyfills(),
       // .vue 单文件组件
       vueSFC(),
 
@@ -30,12 +31,27 @@ export default defineConfig(({ command, mode }) => {
       vueJSX({
         // ... @vue/babel-plugin-jsx 的配置
       }),
-      // AutoImport({
-      //   resolvers: [ElementPlusResolver()],
-      // }),
-      // Components({
-      //   resolvers: [ElementPlusResolver()],
-      // }),
+      AutoImport({
+        imports: ["vue"],
+        resolvers: [
+          ElementPlusResolver(),
+          IconsResolver({
+            prefix: "Icon",
+          }),
+        ],
+      }),
+      Components({
+        resolvers: [
+          // 自动注册图标组件
+          IconsResolver({
+            enabledCollections: ["ep"],
+          }),
+          ElementPlusResolver(),
+        ],
+      }),
+      Icons({
+        autoInstall: true,
+      }),
     ],
     // 静态资源服务目录地址
     publicDir: resolve(__dirname, "public"),
@@ -45,7 +61,7 @@ export default defineConfig(({ command, mode }) => {
     resolve: {
       // 设置文件目录别名
       alias: {
-        "@": "",
+        "@": resolve(__dirname, "src"),
         vue: "vue/dist/vue.esm-bundler.js",
       },
       //

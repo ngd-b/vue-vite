@@ -1,7 +1,6 @@
 import { ref, reactive, defineComponent, computed } from 'vue'
 import { mapState } from 'vuex'
 import { uesSystemStore } from '@/store/system.js'
-import { Menu } from '@element-plus/icons-vue'
 
 // 组件
 import NavMenu from '../components/NavMenu.vue'

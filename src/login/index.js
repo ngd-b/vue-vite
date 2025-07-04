@@ -1,7 +1,4 @@
 import { createApp } from "vue";
-// element
-import ElementPlus from "element-plus";
-import "element-plus/dist/index.css";
 // pinia
 import { createPinia } from "pinia";
 // ajax
@@ -33,7 +30,6 @@ app.config.compilerOptions.whitespace = "preserve";
 // 插件安装
 // app.use()
 // 路由配置
-app.use(ElementPlus, { zIndex: 3000 });
 // pinia use
 app.use(pinia);
 app.mount("#app");
