@@ -1,4 +1,6 @@
 import * as VueRouter from "vue-router";
+import { uesSystemStore } from "@/store/system.js";
+import { defineAsyncComponent } from "vue";
 import {
   House,
   ChromeFilled,
@@ -9,16 +11,13 @@ import {
   PieChart,
   EditPen,
 } from "@element-plus/icons-vue";
-import { uesSystemStore } from "@/store/system.js";
-import { defineAsyncComponent } from "vue";
-import { ElEmpty, ElLoading } from "element-plus";
-
 // routers
 // 各模块自路由注册
 import CNodeRouters from "@/views/CNode/routers";
 
 // page
 const Main = () => import("@/views/index.jsx");
+// const Main = () => import("@/views/index.vue"); //
 // home
 // const Home = { template: '<div>Home</div>' }
 const Home = () => import("@/views/Home");

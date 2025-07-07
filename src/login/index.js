@@ -1,7 +1,4 @@
 import { createApp } from "vue";
-// element
-import ElementPlus from "element-plus";
-import "element-plus/dist/index.css";
 // pinia
 import { createPinia } from "pinia";
 // ajax
@@ -11,6 +8,7 @@ import { ajax } from "@/ajax";
 import LoginApp from "./views/index.vue";
 // css
 import "@/assets/css/base.less";
+import "virtual:uno.css";
 
 // 创建app应用
 const app = createApp(LoginApp);
@@ -33,7 +31,6 @@ app.config.compilerOptions.whitespace = "preserve";
 // 插件安装
 // app.use()
 // 路由配置
-app.use(ElementPlus, { zIndex: 3000 });
 // pinia use
 app.use(pinia);
 app.mount("#app");

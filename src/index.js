@@ -1,7 +1,4 @@
 import { createApp } from "vue";
-// element
-import ElementPlus from "element-plus";
-import "element-plus/dist/index.css";
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 import en from "element-plus/es/locale/lang/en";
 // pinia
@@ -24,6 +21,7 @@ import router from "@/routers/index.js";
 import store from "@/store/index";
 // css
 import "@/assets/css/base.less";
+import "virtual:uno.css";
 
 // 创建app应用
 const app = createApp(App);
@@ -64,8 +62,6 @@ const i18n = createI18n({
 app.use(router);
 // 全局状态管理
 app.use(store);
-// element
-app.use(ElementPlus, { size: "small", zIndex: 3000, locale: zhCn });
 // pinia use
 app.use(pinia);
 // 自定义全局组件
