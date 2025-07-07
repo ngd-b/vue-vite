@@ -24,6 +24,7 @@
     "lint": "eslint --ext .js,.jsx,.vue ./src",
     "lint-staged": "npx lint-staged",
     "commitlint": "commitlint --edit",
+    "prettier": "prettier --write .",
     "prepare": "husky"
   },
   "dependencies": {
@@ -62,6 +63,7 @@
     "husky": "^9.1.7",
     "less": "^4.3.0",
     "lint-staged": "^16.1.2",
+    "prettier": "3.6.2",
     "unocss": "^66.3.3",
     "unplugin-auto-import": "^19.3.0",
     "unplugin-icons": "^22.1.0",

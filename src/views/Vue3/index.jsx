@@ -1,20 +1,20 @@
-import { ref, defineComponent } from 'vue'
+import { ref, defineComponent } from "vue";
 
 // 自定义组件
-import ComponsitionApi from './components/compositionAPi.vue'
-import KeepAlive from './components/keepAlive'
+import ComponsitionApi from "./components/compositionAPi.vue";
+import KeepAlive from "./components/keepAlive";
 
 export default defineComponent({
   props: {},
   setup(props, context) {
-    const num = ref(0)
+    const num = ref(0);
     return {
       num,
-    }
+    };
   },
   methods: {
     handleAdd() {
-      this.num++
+      this.num++;
     },
   },
   render() {
@@ -25,6 +25,6 @@ export default defineComponent({
         <ComponsitionApi />
         <KeepAlive />
       </div>
-    )
+    );
   },
-})
+});

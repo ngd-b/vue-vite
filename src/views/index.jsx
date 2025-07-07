@@ -1,11 +1,11 @@
-import { ref, reactive, defineComponent, computed } from 'vue'
-import { mapState } from 'vuex'
-import { uesSystemStore } from '@/store/system.js'
+import { ref, reactive, defineComponent, computed } from "vue";
+import { mapState } from "vuex";
+import { uesSystemStore } from "@/store/system.js";
 
 // 组件
-import NavMenu from '../components/NavMenu.vue'
+import NavMenu from "../components/NavMenu.vue";
 // 路由地址
-import { routerMenus } from '@/routers'
+import { routerMenus } from "@/routers";
 // defineComponent  只返回传递给它的对象；
 // 此处IDE支持
 export default defineComponent({
@@ -21,15 +21,15 @@ export default defineComponent({
     // const { name } = toRef(props)
 
     // 创建响应式数据
-    const count = ref(0)
-    const user = reactive({ name: '', age: 21 })
+    const count = ref(0);
+    const user = reactive({ name: "", age: 21 });
 
     // 获取到pinia的数据
-    const systemStore = uesSystemStore()
+    const systemStore = uesSystemStore();
     // 当前切换语言
-    const lang = computed(() => systemStore.lang)
+    const lang = computed(() => systemStore.lang);
     // menuIsCollapse
-    const menuIsCollapse = computed(() => systemStore.menuIsCollapse)
+    const menuIsCollapse = computed(() => systemStore.menuIsCollapse);
 
     return {
       count,
@@ -37,7 +37,7 @@ export default defineComponent({
       systemStore,
       lang,
       menuIsCollapse,
-    }
+    };
   },
   computed: {
     ...mapState({
@@ -46,20 +46,20 @@ export default defineComponent({
   },
   methods: {
     handleAddCount() {
-      this.count++
+      this.count++;
     },
     /**
      * 语言切换
      */
     transformLang(val) {
-      this.$i18n.locale = val
-      this.systemStore.transformLang(val)
+      this.$i18n.locale = val;
+      this.systemStore.transformLang(val);
     },
     /**
      * 按钮折叠
      */
     handleExpandMenu() {
-      this.systemStore.menuIsCollapse = !this.menuIsCollapse
+      this.systemStore.menuIsCollapse = !this.menuIsCollapse;
     },
   },
   render() {
@@ -68,7 +68,7 @@ export default defineComponent({
         {this.systemStore.showAside ? (
           <el-container class="app-container">
             <el-header>
-              <div class={['logo-name', this.menuIsCollapse ? 'collapse' : '']}>
+              <div class={["logo-name", this.menuIsCollapse ? "collapse" : ""]}>
                 {!this.menuIsCollapse && <h1>{this.systemName}</h1>}
                 <el-icon
                   size={40}
@@ -93,7 +93,7 @@ export default defineComponent({
               </div>
             </el-header>
             <el-container>
-              <el-aside width={this.menuIsCollapse ? '64px' : '200px'}>
+              <el-aside width={this.menuIsCollapse ? "64px" : "200px"}>
                 <NavMenu routerData={routerMenus} />
               </el-aside>
               <el-main>
@@ -111,6 +111,6 @@ export default defineComponent({
           </el-container>
         )}
       </>
-    )
+    );
   },
-})
+});

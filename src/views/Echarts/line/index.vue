@@ -8,60 +8,60 @@
   </div>
 </template>
 <script>
-  import * as echarts from 'echarts'
-  import { ref, markRaw } from 'vue'
-  export default {
-    setup() {
-      const chart = ref(null)
+import * as echarts from "echarts";
+import { ref, markRaw } from "vue";
+export default {
+  setup() {
+    const chart = ref(null);
 
-      return {
-        chart,
-      }
-    },
-    mounted() {
-      this.initChart()
-    },
-    methods: {
-      initChart() {
-        this.chart = markRaw(echarts.init(this.$refs.chart))
+    return {
+      chart,
+    };
+  },
+  mounted() {
+    this.initChart();
+  },
+  methods: {
+    initChart() {
+      this.chart = markRaw(echarts.init(this.$refs.chart));
 
-        const options = {
-          title: {
-            text: '柱状图',
+      const options = {
+        title: {
+          text: "柱状图",
+        },
+        legend: {
+          show: true,
+        },
+        xAxis: {
+          type: "category",
+          data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            name: "销量",
+            type: "line",
+            data: [5, 20, 36, 10, 10, 20],
           },
-          legend: {
-            show: true,
+          {
+            name: "利润",
+            type: "line",
+            data: [25, 120, 136, 90, 110, 120],
           },
-          xAxis: {
-            type: 'category',
-            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
-          },
-          yAxis: {
-            type: 'value',
-          },
-          series: [
-            {
-              name: '销量',
-              type: 'line',
-              data: [5, 20, 36, 10, 10, 20],
-            },
-            {
-              name: '利润',
-              type: 'line',
-              data: [25, 120, 136, 90, 110, 120],
-            },
-          ],
-        }
-        this.chart.setOption(options)
-      },
+        ],
+      };
+      this.chart.setOption(options);
     },
-  }
+  },
+};
 </script>
 <style lang="less" scoped>
-  .bar-chart {
-    .chart-box {
-      width: 500px;
-      height: 400px;
-    }
+.bar-chart {
+  .chart-box {
+    width: 500px;
+    height: 400px;
   }
+}
 </style>

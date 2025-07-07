@@ -5,7 +5,11 @@
         <main>
           <header>
             <div class="topic-title">
-              <tab-type :tab="data.tab" :is-top="data.top" :is-good="data.good" />
+              <tab-type
+                :tab="data.tab"
+                :is-top="data.top"
+                :is-good="data.good"
+              />
               <h3>{{ data.title }}</h3>
             </div>
             <div class="topic-desc">
@@ -16,8 +20,8 @@
             </div>
           </header>
           <div class="topic-content">
-            <div v-html="data.content"/>
-            <div class="topic-reply"/>
+            <div v-html="data.content" />
+            <div class="topic-reply" />
           </div>
           <div class="reply-info">
             <span>{{ data.replies.length }}回复</span>
@@ -30,23 +34,23 @@
         </main>
       </el-col>
       <el-col :span="6">
-        <div class="author-info"/>
+        <div class="author-info" />
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
-import { getTopicDetail } from '@/ajax/cnodeAPI.js';
-import { TypeMapName } from '../enum';
-import dayjs from 'dayjs';
+import { getTopicDetail } from "@/ajax/cnodeAPI.js";
+import { TypeMapName } from "../enum";
+import dayjs from "dayjs";
 
 // 回复组件
-import ReplyInfo from './reply-info.vue';
-import TabType from '../tabType.vue';
+import ReplyInfo from "./reply-info.vue";
+import TabType from "../tabType.vue";
 
 export default {
-  name: 'TopicDetail',
+  name: "TopicDetail",
   components: {
     ReplyInfo,
     TabType,
@@ -55,7 +59,7 @@ export default {
     // 标签标识
     this.TypeMapName = TypeMapName;
     return {
-      id: '',
+      id: "",
       data: {
         author: {},
         replies: [],
@@ -70,18 +74,18 @@ export default {
   },
   methods: {
     formatCreateDate(val) {
-      const month = dayjs().diff(dayjs(val), 'M');
+      const month = dayjs().diff(dayjs(val), "M");
 
       if (month > 1) {
-        return month + '个月以前';
+        return month + "个月以前";
       }
-      return dayjs(val).format('YYYY-MM-DD');
+      return dayjs(val).format("YYYY-MM-DD");
     },
     async getTopicDetail() {
       const params = {
         id: this.id,
         mdrender: true,
-        accesstoken: '',
+        accesstoken: "",
       };
       try {
         const { data, success } = await getTopicDetail(params);

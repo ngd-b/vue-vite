@@ -40,102 +40,102 @@
   </div>
 </template>
 <script setup>
-  import { ref, reactive } from 'vue'
-  import { uesSystemStore } from '@/store/system.js'
-  import LoginBg from '@/assets/svg/login-bg.svg?url'
+import { ref, reactive } from "vue";
+import { uesSystemStore } from "@/store/system.js";
+import LoginBg from "@/assets/svg/login-bg.svg?url";
 
-  //
-  const loading = ref(false)
-  // Form 登陆表单
-  const form = reactive({
-    userName: '',
-    password: '',
-  })
-  //
-  const formRef = ref()
-  // 表单校验
-  const rules = {
-    userName: [{ required: true, message: '请输入用户名', trigger: 'change' }],
-    password: [{ required: true, message: '请输入密码', trigger: 'change' }],
+//
+const loading = ref(false);
+// Form 登陆表单
+const form = reactive({
+  userName: "",
+  password: "",
+});
+//
+const formRef = ref();
+// 表单校验
+const rules = {
+  userName: [{ required: true, message: "请输入用户名", trigger: "change" }],
+  password: [{ required: true, message: "请输入密码", trigger: "change" }],
+};
+// store
+const systemStore = uesSystemStore();
+// 提交
+const handleSubmit = async (form) => {
+  if (!form) {
+    return;
   }
-  // store
-  const systemStore = uesSystemStore()
-  // 提交
-  const handleSubmit = async (form) => {
-    if (!form) {
-      return
-    }
-    loading.value = true
-    const params = {
-      ...form.value,
-    }
-    try {
-      // 校验form
-      await form.validate()
-      // 登录接口调用
-      // await this.$http.get(params)
+  loading.value = true;
+  const params = {
+    ...form.value,
+  };
+  try {
+    // 校验form
+    await form.validate();
+    // 登录接口调用
+    // await this.$http.get(params)
 
-      await systemStore.login(params)
-    } catch (err) {
-      console.error(err)
-    } finally {
-      loading.value = false
-    }
+    await systemStore.login(params);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    loading.value = false;
   }
+};
 </script>
 <style lang="less" scoped>
-  .login-container {
-    background: #303133;
+.login-container {
+  background: #303133;
+  height: 100%;
+  padding: 0 30px;
+  :deep(.el-row) {
     height: 100%;
-    padding: 0 30px;
-    :deep(.el-row) {
-      height: 100%;
+  }
+  .login-bg {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+  }
+  .login-form {
+    width: 100%;
+    max-width: 520px;
+    height: 450px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    h2 {
+      margin-bottom: 40px;
+      color: #fff;
+      font-size: 48px;
     }
-    .login-bg {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      padding-left: 5%;
-    }
-    .login-form {
-      width: 100%;
-      max-width: 520px;
-      height: 450px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 10px;
-      h2 {
-        margin-bottom: 40px;
-        color: #fff;
-        font-size: 48px;
-      }
-      :deep(.el-form) {
-        width: 360px;
-        .el-form-item__content {
-          justify-content: center;
+    :deep(.el-form) {
+      width: 360px;
+      .el-form-item__content {
+        justify-content: center;
 
-          .el-input {
-            --el-input-height: 48px;
-            .el-input__wrapper {
-              background: rgba(255, 255, 255, 0.1);
-              .el-input__inner {
-                color: #fff;
-                font-size: 20px;
-              }
+        .el-input {
+          --el-input-height: 48px;
+          .el-input__wrapper {
+            background: rgba(255, 255, 255, 0.1);
+            .el-input__inner {
+              color: #fff;
+              font-size: 20px;
             }
           }
-          .el-button.submit-btn {
-            margin-top: 15px;
-            width: 130px;
-            height: 40px;
-            font-size: 18px;
-          }
+        }
+        .el-button.submit-btn {
+          margin-top: 15px;
+          width: 130px;
+          height: 40px;
+          font-size: 18px;
         }
       }
     }
   }
+}
 </style>

@@ -9,7 +9,7 @@
         <span>{{ data.create_at }}</span>
       </div>
       <div>
-        <div v-html="data.content"/>
+        <div v-html="data.content" />
       </div>
     </div>
   </div>
@@ -26,9 +26,9 @@ export default {
     },
   },
   data() {
-    return {}
+    return {};
   },
-}
+};
 </script>
 <style lang="less" scoped>
 .reply-detail {

@@ -350,23 +350,23 @@
   </div>
 </template>
 <script>
-  import TitleOptions from './title'
+import TitleOptions from "./title";
 
-  export default {
-    emits: ['change'],
-    data() {
-      return {
-        options: TitleOptions,
-      }
-    },
-    watch: {
-      options: {
-        deep: true,
-        immediate: true,
-        handler() {
-          this.$emit('change', this.options)
-        },
+export default {
+  emits: ["change"],
+  data() {
+    return {
+      options: TitleOptions,
+    };
+  },
+  watch: {
+    options: {
+      deep: true,
+      immediate: true,
+      handler() {
+        this.$emit("change", this.options);
       },
     },
-  }
+  },
+};
 </script>

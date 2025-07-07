@@ -1,42 +1,42 @@
-import { defineComponent, ref, computed } from 'vue'
-import './index.less'
-import { FileType } from '@/components/FilePreview/enum.js'
+import { defineComponent, ref, computed } from "vue";
+import "./index.less";
+import { FileType } from "@/components/FilePreview/enum.js";
 /**
  * 文件进行预览
  */
 // pptx
 // import pptFile from '@/assets/ppt/file.pptx?url'
 // pdf
-import pdfFile from '@/assets/pdf/file.pdf?url'
+import pdfFile from "@/assets/pdf/file.pdf?url";
 // import pdfFile from './1666678982557.pdf'
 // docx
-import docxFile from '@/assets/docx/file.docx?url'
+import docxFile from "@/assets/docx/file.docx?url";
 // md
-import ReadME from '../../../README.md?raw'
-import {ElTabs,ElTabPane} from 'element-plus'
-import "element-plus/es/components/tabs/style/css"
+import ReadME from "../../../README.md?raw";
+import { ElTabs, ElTabPane } from "element-plus";
+import "element-plus/es/components/tabs/style/css";
 
 const FileTypeMapFile = {
   [FileType.pdf]: pdfFile,
   [FileType.docx]: docxFile,
   [FileType.md]: ReadME,
-}
-const FileTypeData = Object.keys(FileTypeMapFile)
+};
+const FileTypeData = Object.keys(FileTypeMapFile);
 export default defineComponent({
   components: {
     ElTabs,
-    ElTabPane
+    ElTabPane,
   },
   setup(props, context) {
     // 当前活动的radio
-    const activeTab = ref('pdf')
+    const activeTab = ref("pdf");
     // 文件的url
-    const fileUrl = computed(() => FileTypeMapFile[activeTab.value])
+    const fileUrl = computed(() => FileTypeMapFile[activeTab.value]);
 
     return {
       activeTab,
       fileUrl,
-    }
+    };
   },
   render() {
     return (
@@ -60,6 +60,6 @@ export default defineComponent({
           />
         </main>
       </div>
-    )
+    );
   },
-})
+});

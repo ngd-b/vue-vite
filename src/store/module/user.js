@@ -1,8 +1,7 @@
-
 export default {
-  state () {
+  state() {
     return {
-      userInfo: {}
-    }
-  }
-}
+      userInfo: {},
+    };
+  },
+};

@@ -1,4 +1,4 @@
-import Axios from 'axios'
+import Axios from "axios";
 // import { merge } from 'lodash'
 
 /**
@@ -16,50 +16,50 @@ class Api {
     const options = {
       timeout: 6000,
       ...config,
-    }
+    };
 
-    this.ajax = Axios.create(options)
+    this.ajax = Axios.create(options);
 
     // 拦截请求、响应
-    this.interceptorsRequest()
-    this.interceptorsResponse()
+    this.interceptorsRequest();
+    this.interceptorsResponse();
 
     // 支持原方式请求
-    return this.ajax
+    return this.ajax;
   }
 
   interceptorsRequest() {
     this.ajax.interceptors.request.use(
       function (config) {
-        return config
+        return config;
       },
       function (error) {
-        return Promise.reject(error)
-      }
-    )
+        return Promise.reject(error);
+      },
+    );
   }
 
   interceptorsResponse() {
     this.ajax.interceptors.response.use(
       function (res) {
         if (res.status === 200) {
-          return res.data
+          return res.data;
         }
-        return Promise.reject(res)
+        return Promise.reject(res);
       },
       function (error) {
-        return Promise.reject(error)
-      }
-    )
+        return Promise.reject(error);
+      },
+    );
   }
 
   request(params) {
-    return Promise.resolve(this.ajax(params))
+    return Promise.resolve(this.ajax(params));
   }
 }
 
 // 默认的服务地址
 export const ajax = new Api({
   baseURL: import.meta.env.BASE_URL,
-})
-export default Api
+});
+export default Api;

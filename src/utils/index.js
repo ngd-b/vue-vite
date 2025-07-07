@@ -1,8 +1,7 @@
-
 /**
  * 格式化时间
  */
-import dayjs from 'dayjs'
+import dayjs from "dayjs";
 
 /**
  * 格式化 YYYY-MM-DD
@@ -10,5 +9,5 @@ import dayjs from 'dayjs'
  * @returns
  */
 export const formatDate = (val) => {
-  return dayjs(val).format('YYYY-MM-DD')
-}
+  return dayjs(val).format("YYYY-MM-DD");
+};

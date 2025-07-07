@@ -1,5 +1,5 @@
-import { defineComponent, onMounted } from 'vue'
-import './App.less'
+import { defineComponent, onMounted } from "vue";
+import "./App.less";
 
 // defineComponent  只返回传递给它的对象；
 // 此处IDE支持
@@ -9,7 +9,7 @@ export default defineComponent({
     // 挂载
     onMounted(() => {
       //
-    })
+    });
   },
   render() {
     return (
@@ -18,6 +18,6 @@ export default defineComponent({
           <router-view />
         </Transition>
       </>
-    )
+    );
   },
-})
+});

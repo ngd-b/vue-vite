@@ -1,9 +1,8 @@
-
 export const FileType = {
-  pdf:'pdf',
-  docx:'docx',
-  pptx:'pptx',
-  excel:'excel',
+  pdf: "pdf",
+  docx: "docx",
+  pptx: "pptx",
+  excel: "excel",
   // markdown
-  md:'md'
-}
+  md: "md",
+};

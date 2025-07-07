@@ -1,20 +1,20 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
 
 // module
-import User from './module/user'
+import User from "./module/user";
 
 export default createStore({
-  state () {
+  state() {
     return {
-      systemName: 'vite+vue3'
-    }
+      systemName: "vite+vue3",
+    };
   },
   mutations: {
-    changeSytemName (state, payload) {
-      state.systemName = payload
-    }
+    changeSytemName(state, payload) {
+      state.systemName = payload;
+    },
   },
   modules: {
-    user: User
-  }
-})
+    user: User,
+  },
+});

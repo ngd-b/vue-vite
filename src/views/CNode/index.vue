@@ -7,20 +7,20 @@
   </div>
 </template>
 <script>
-  //  组件
-  import { Header as CNodeHeader } from './components/index.js'
+//  组件
+import { Header as CNodeHeader } from "./components/index.js";
 
-  import './index.less'
-  export default {
-    components: {
-      CNodeHeader,
-    },
-    data() {
-      return {
-        name: 'CNode',
-      }
-    },
-    mounted() {},
-    methods: {},
-  }
+import "./index.less";
+export default {
+  components: {
+    CNodeHeader,
+  },
+  data() {
+    return {
+      name: "CNode",
+    };
+  },
+  mounted() {},
+  methods: {},
+};
 </script>
