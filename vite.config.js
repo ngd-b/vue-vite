@@ -40,6 +40,7 @@ export default defineConfig(({ command, mode }) => {
             prefix: "Icon",
           }),
         ],
+        extensions: ["vue", "jsx", "tsx"],
       }),
       Components({
         resolvers: [
@@ -49,6 +50,7 @@ export default defineConfig(({ command, mode }) => {
           }),
           ElementPlusResolver(),
         ],
+        extensions: ["vue", "jsx", "tsx"],
       }),
       Icons({
         autoInstall: true,
