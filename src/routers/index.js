@@ -16,7 +16,8 @@ import {
 import CNodeRouters from "@/views/CNode/routers";
 
 // page
-const Main = () => import("@/views/index.jsx");
+// const Main = () => import("@/views/index.jsx");
+const Main = () => import("@/views/index.vue"); //
 // home
 // const Home = { template: '<div>Home</div>' }
 const Home = () => import("@/views/Home");

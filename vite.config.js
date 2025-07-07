@@ -9,6 +9,7 @@ import IconsResolver from "unplugin-icons/resolver";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
+import UnoCSS from "unocss/vite";
 
 // config
 export default defineConfig(({ command, mode }) => {
@@ -52,6 +53,7 @@ export default defineConfig(({ command, mode }) => {
       Icons({
         autoInstall: true,
       }),
+      UnoCSS(),
     ],
     // 静态资源服务目录地址
     publicDir: resolve(__dirname, "public"),

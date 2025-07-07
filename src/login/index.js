@@ -8,6 +8,7 @@ import { ajax } from "@/ajax";
 import LoginApp from "./views/index.vue";
 // css
 import "@/assets/css/base.less";
+import "virtual:uno.css";
 
 // 创建app应用
 const app = createApp(LoginApp);

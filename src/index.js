@@ -22,6 +22,7 @@ import router from "@/routers/index.js";
 import store from "@/store/index";
 // css
 import "@/assets/css/base.less";
+import "virtual:uno.css";
 
 // 创建app应用
 const app = createApp(App);
