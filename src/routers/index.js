@@ -227,14 +227,14 @@ const router = VueRouter.createRouter({
 });
 // 路由守卫
 router.beforeEach((to, from, next) => {
-  const systemStore = uesSystemStore();
+  // const systemStore = uesSystemStore();
 
-  if (!systemStore.isLogin) {
-    // 未登陆时，跳转登录页面
-    window.location.href = window.location.origin + "/login/";
-    next(false);
-  }
-  systemStore.changeMenu(to.path);
+  // if (!systemStore.isLogin) {
+  //   // 未登陆时，跳转登录页面
+  //   window.location.href = window.location.origin + "/login/";
+  //   next(false);
+  // }
+  // systemStore.changeMenu(to.path);
   next();
 });
 export default router;
