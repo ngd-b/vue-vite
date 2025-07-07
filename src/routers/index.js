@@ -16,8 +16,8 @@ import {
 import CNodeRouters from "@/views/CNode/routers";
 
 // page
-const Main = () => import("@/views/index.jsx");
-// const Main = () => import("@/views/index.vue"); //
+// const Main = () => import("@/views/index.jsx");
+const Main = () => import("@/views/index.vue"); //
 // home
 // const Home = { template: '<div>Home</div>' }
 const Home = () => import("@/views/Home");
@@ -119,16 +119,16 @@ const menuRoutes = [
       isMenu: true,
     },
   },
-  // {
-  //   path: "/file-preview",
-  //   name: "filePreview",
-  //   component: () => import("@/views/FilePreview/index.jsx"),
-  //   meta: {
-  //     title: "file-preview",
-  //     icon: Document,
-  //     isMenu: true,
-  //   },
-  // },
+  {
+    path: "/file-preview",
+    name: "filePreview",
+    component: () => import("@/views/FilePreview/index.jsx"),
+    meta: {
+      title: "file-preview",
+      icon: Document,
+      isMenu: true,
+    },
+  },
   {
     path: "/echarts",
     name: "echarts",

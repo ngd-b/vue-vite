@@ -13,6 +13,8 @@ import pdfFile from '@/assets/pdf/file.pdf?url'
 import docxFile from '@/assets/docx/file.docx?url'
 // md
 import ReadME from '../../../README.md?raw'
+import {ElTabs,ElTabPane} from 'element-plus'
+import "element-plus/es/components/tabs/style/css"
 
 const FileTypeMapFile = {
   [FileType.pdf]: pdfFile,
@@ -21,6 +23,10 @@ const FileTypeMapFile = {
 }
 const FileTypeData = Object.keys(FileTypeMapFile)
 export default defineComponent({
+  components: {
+    ElTabs,
+    ElTabPane
+  },
   setup(props, context) {
     // 当前活动的radio
     const activeTab = ref('pdf')
