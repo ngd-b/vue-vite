@@ -51,6 +51,13 @@ export default defineConfig(({ command, mode }) => {
           ElementPlusResolver(),
         ],
         extensions: ["vue", "jsx", "tsx"],
+        include: [
+          /\.vue$/,
+          /\.vue\?vue/,
+          /\.vue\.[tj]sx?\?vue/, // for vue-loader with experimentalInlineMatchResource enabled
+          /\.vue\?v=/,
+          /\.jsx/,
+        ],
       }),
       Icons({
         autoInstall: true,
