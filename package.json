@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@bundled-es-modules/pdfjs-dist": "^2.16.106",
+    "@echarts-component/vue": "^0.5.0",
     "@element-plus/icons-vue": "^2.3.1",
     "@intlify/unplugin-vue-i18n": "^6.0.8",
     "@sindresorhus/slugify": "^2.2.1",

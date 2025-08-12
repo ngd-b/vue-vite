@@ -12,7 +12,7 @@ vite + vue3
 npm install vite
 ```
 
-> 安装 `@vitejs/plugin-vue-jsx ` `@vitejs/plugin-vue`
+> 安装 `@vitejs/plugin-vue-jsx` `@vitejs/plugin-vue`
 
 ```js
 // 类型提示

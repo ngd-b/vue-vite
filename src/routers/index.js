@@ -197,6 +197,16 @@ const menuRoutes = [
       isMenu: true,
     },
   },
+  {
+    path: "/echarts-componet",
+    name: "echarts-componet",
+    component: () => import("@/views/EchartComponent"),
+    meta: {
+      title: "echarts-componet",
+      icon: EditPen,
+      isMenu: true,
+    },
+  },
 ];
 // routes
 const routes = [
