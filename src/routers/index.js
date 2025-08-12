@@ -207,6 +207,28 @@ const menuRoutes = [
       isMenu: true,
     },
   },
+  {
+    path: "/leaflet",
+    name: "leaflet",
+    meta: {
+      title: "leaflet",
+      icon: EditPen,
+      isMenu: true,
+    },
+    redirect: "/leaflet/maskhalo",
+    children: [
+      {
+        path: "/leaflet/maskhalo",
+        name: "maskhalo",
+        component: () => import("@/views/leaflet/maskhalo"),
+        meta: {
+          title: "leaflet.maskhalo",
+          icon: EditPen,
+          isMenu: true,
+        },
+      },
+    ],
+  },
 ];
 // routes
 const routes = [
