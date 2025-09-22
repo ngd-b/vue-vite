@@ -28,6 +28,7 @@
 import { onMounted } from "vue";
 import {
   useVueEcharts,
+  VueEcharts,
   Grid,
   XAxis,
   MinorTick,

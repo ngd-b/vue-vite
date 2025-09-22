@@ -51,12 +51,14 @@
 import { onMounted } from "vue";
 import {
   useVueEcharts,
+  VueEcharts,
   Tooltip,
   Heatmap,
   Emphasis,
   ItemStyle,
   XAxis,
   YAxis,
+  VisualMap,
 } from "@echarts-component/vue";
 
 const { getOption, options } = useVueEcharts();

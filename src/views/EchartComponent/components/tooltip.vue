@@ -13,7 +13,7 @@
           prop="label"
           show
           :formatter="
-            (params) => echarts.format.formatTime('yyyy-MM-dd', params.value)
+            (params:any) => echarts.time.format( params.value,'yyyy-MM-dd', true)
           "
         />
         <Handle show />
@@ -56,6 +56,7 @@ import { onMounted } from "vue";
 import * as echarts from "echarts";
 import {
   useVueEcharts,
+  VueEcharts,
   Legend,
   Tooltip,
   XAxis,

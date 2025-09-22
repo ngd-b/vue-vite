@@ -39,7 +39,7 @@
       <SplitLine show>
         <LineStyle color="#999" type="dashed" />
       </SplitLine>
-      <AxisLine :show="false" />'
+      <AxisLine :show="false" />
     </AngleAxis>
     <RadiusAxis
       type="category"
@@ -68,6 +68,7 @@
 import { onMounted } from "vue";
 import {
   useVueEcharts,
+  VueEcharts,
   Scatter,
   RadiusAxis,
   Text,
@@ -77,8 +78,12 @@ import {
   LineStyle,
   Legend,
   Title,
+  Polar,
 } from "@echarts-component/vue";
 
+defineOptions({
+  name: "PorlarExample",
+});
 const { getOption, options } = useVueEcharts();
 onMounted(() => {
   console.log(getOption(), options.value);

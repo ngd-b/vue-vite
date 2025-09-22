@@ -1,9 +1,11 @@
 <template>
-  <h2>vue-echarts</h2>
+  <div class="w-full h-full">
+    <h2>vue-echarts</h2>
 
-  <div class="flex flex-wrap gap-20px items-start">
-    <div v-for="component in components" :key="component">
-      <component :is="component" />
+    <div class="flex flex-wrap gap-20px items-start">
+      <div v-for="(component, index) in components" :key="index">
+        <component :is="component" />
+      </div>
     </div>
   </div>
 </template>

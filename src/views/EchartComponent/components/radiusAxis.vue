@@ -19,6 +19,7 @@
 import { onMounted } from "vue";
 import {
   useVueEcharts,
+  VueEcharts,
   Line,
   RadiusAxis,
   AngleAxis,
