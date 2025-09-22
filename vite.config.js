@@ -126,7 +126,7 @@ export default defineConfig(({ command, mode }) => {
         },
       },
       // 构建目录自动清除
-      emptyOutDir: false,
+      emptyOutDir: true,
     },
     // 依赖优化配置项
     optimizeDeps: {

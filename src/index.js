@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 import en from "element-plus/es/locale/lang/en";
+// import EchartsComponents from "@echarts-component/vue";
 // pinia
 import { createPinia } from "pinia";
 // component
@@ -56,6 +57,7 @@ const i18n = createI18n({
   },
 });
 
+// app.use(EchartsComponents);
 // 插件安装
 // app.use()
 // 路由配置
